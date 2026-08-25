@@ -3,168 +3,223 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LoanSaver.in | Home Loan Prepayment & EMI Savings Calculator</title>
-  <meta name="description" content="Calculate how much interest and tenure you save by making extra monthly or annual prepayments on your home loan. Free, instant, and privacy-first." />
+  <title>LoanSaver.in | Smart Home Loan Prepayment & Tenure Reducer Calculator</title>
+  <meta name="description" content="Calculate how much interest and loan tenure you save by making extra monthly prepayments on your home loan. Free, interactive, and privacy-first." />
   
   <!-- Google AdSense Verification & Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --success: #10b981;
+      --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      --emerald-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --accent: #f59e0b;
       --surface: #ffffff;
       --bg: #f8fafc;
       --text: #0f172a;
       --muted: #64748b;
       --border: #e2e8f0;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+      --card-shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
-      background-color: var(--bg);
+      background: #f8fafc;
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 24px 24px;
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Header */
+    /* Top Navbar */
     header {
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 1.5rem;
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
+      padding: 0.9rem 1.5rem;
     }
 
-    .header-container {
-      max-width: 1100px;
+    .nav-container {
+      max-width: 1120px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
-      font-size: 1.4rem;
+    .brand-logo {
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--primary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      letter-spacing: -0.02em;
     }
 
-    .logo span {
-      color: var(--text);
+    .brand-logo span {
+      color: #0f172a;
     }
 
-    .badge {
+    .badge-pill {
       background: #eff6ff;
       color: var(--primary);
       font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
       border-radius: 9999px;
       border: 1px solid #bfdbfe;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     /* Main Container */
-    .main-container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .app-container {
+      max-width: 1120px;
+      margin: 2.5rem auto 3rem;
+      padding: 0 1.25rem;
     }
 
-    .hero-text {
+    .hero-header {
       text-align: center;
-      margin-bottom: 2rem;
+      max-width: 720px;
+      margin: 0 auto 2.25rem;
     }
 
-    .hero-text h1 {
-      font-size: 2.2rem;
+    .hero-header h1 {
+      font-size: 2.35rem;
       font-weight: 800;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.03em;
       color: #0f172a;
-      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
     }
 
-    .hero-text p {
+    .hero-header p {
       color: var(--muted);
       font-size: 1.05rem;
+      font-weight: 500;
     }
 
-    /* Ad Container Units */
-    .ad-container {
+    /* Ad Container */
+    .ad-wrapper {
       margin: 1.5rem 0;
       min-height: 90px;
       display: flex;
       justify-content: center;
       align-items: center;
       background: transparent;
-      text-align: center;
       overflow: hidden;
     }
 
     /* Calculator Grid */
-    .calc-grid {
+    .calculator-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.75rem;
       margin-bottom: 2.5rem;
+      align-items: start;
     }
 
-    @media (max-width: 768px) {
-      .calc-grid {
+    @media (max-width: 860px) {
+      .calculator-layout {
         grid-template-columns: 1fr;
+      }
+      .hero-header h1 {
+        font-size: 1.85rem;
       }
     }
 
-    .card {
+    .app-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
+      border-radius: 20px;
+      padding: 2rem;
       box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .card-title {
-      font-size: 1.15rem;
+    .app-card:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .card-header {
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
+      color: #0f172a;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
-    .input-group {
-      margin-bottom: 1.25rem;
+    /* Input Controls */
+    .field-group {
+      margin-bottom: 1.4rem;
     }
 
-    .input-label {
+    .field-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 0.4rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
 
-    .input-val-display {
+    .field-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .field-value-pill {
+      background: #eff6ff;
       color: var(--primary);
       font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .input-box-wrapper {
+      position: relative;
+      margin-top: 0.4rem;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f172a;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .input-box:focus {
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
     }
 
     input[type="range"] {
@@ -172,195 +227,233 @@
       accent-color: var(--primary);
       height: 6px;
       background: #e2e8f0;
-      border-radius: 3px;
+      border-radius: 6px;
       outline: none;
       cursor: pointer;
+      margin-top: 0.3rem;
     }
 
-    .number-input {
-      width: 100%;
-      padding: 0.6rem 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s ease;
-      margin-top: 0.25rem;
-    }
-
-    .number-input:focus {
-      border-color: var(--primary);
-    }
-
-    /* Results Card */
-    .savings-highlight {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: white;
-      padding: 1.25rem;
-      border-radius: 12px;
+    /* Savings Hero Banner */
+    .savings-card {
+      background: var(--emerald-gradient);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
       text-align: center;
       margin-bottom: 1.5rem;
+      box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.3);
     }
 
-    .savings-highlight span {
-      font-size: 0.85rem;
+    .savings-card .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       opacity: 0.9;
     }
 
-    .savings-highlight h2 {
-      font-size: 2rem;
+    .savings-card .amount {
+      font-size: 2.25rem;
       font-weight: 800;
-      margin-top: 0.25rem;
+      letter-spacing: -0.02em;
+      margin-top: 0.2rem;
     }
 
-    .result-row {
+    /* Visual Comparison Bar */
+    .visual-comparison {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bar-label-group {
       display: flex;
       justify-content: space-between;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
     }
 
-    .result-row:last-child {
+    .bar-track {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #10b981;
+      width: 65%;
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Output Summary Rows */
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.92rem;
+    }
+
+    .summary-item:last-child {
       border-bottom: none;
     }
 
-    .result-label {
+    .summary-item .label {
       color: var(--muted);
       font-weight: 500;
     }
 
-    .result-val {
+    .summary-item .val {
       font-weight: 700;
-      color: var(--text);
+      color: #0f172a;
     }
 
-    .result-val.green {
-      color: var(--success);
+    .summary-item .val.highlight {
+      color: #059669;
+      background: #ecfdf5;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
     }
 
-    /* Content / SEO & Compliance Guide */
-    .content-section {
+    /* Knowledge Guide Section */
+    .guide-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
+      border-radius: 20px;
+      padding: 2.25rem;
+      box-shadow: var(--card-shadow);
       margin-bottom: 2rem;
     }
 
-    .content-section h2 {
-      font-size: 1.4rem;
+    .guide-card h2 {
+      font-size: 1.35rem;
       font-weight: 700;
-      margin: 1.5rem 0 0.75rem 0;
       color: #0f172a;
+      margin: 1.75rem 0 0.75rem 0;
     }
 
-    .content-section h2:first-child {
+    .guide-card h2:first-child {
       margin-top: 0;
     }
 
-    .content-section p {
+    .guide-card p {
       color: #475569;
       margin-bottom: 1rem;
       font-size: 0.95rem;
+      line-height: 1.65;
     }
 
-    .content-section ul {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
+    .guide-card ul {
+      margin-left: 1.3rem;
+      margin-bottom: 1.25rem;
       color: #475569;
     }
 
-    .content-section li {
+    .guide-card li {
       margin-bottom: 0.5rem;
+      font-size: 0.95rem;
     }
 
-    /* FAQ */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
+    /* FAQ Section */
+    .faq-list {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .faq-question {
-      font-weight: 600;
-      color: #0f172a;
+    .faq-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem;
+      background: #f8fafc;
       cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .faq-box:hover {
+      background: #f1f5f9;
+    }
+
+    .faq-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
     }
 
-    .faq-answer {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+    .faq-body {
       display: none;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.6;
     }
 
-    .faq-item.active .faq-answer {
+    .faq-box.active .faq-body {
       display: block;
     }
 
-    /* Footer */
+    .faq-box.active {
+      background: #ffffff;
+      border-color: #cbd5e1;
+    }
+
+    /* Clean Minimal Footer (No About/Contact) */
     footer {
-      background: #0f172a;
-      color: #94a3b8;
-      padding: 2.5rem 1rem 1.5rem;
-      font-size: 0.85rem;
-    }
-
-    .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 1rem;
       text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-links a {
-      color: #cbd5e1;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-
-    .footer-links a:hover {
-      color: white;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Clean Top Bar -->
   <header>
-    <div class="header-container">
-      <a href="#" class="logo">Loan<span>Saver</span></a>
-      <span class="badge">Prepayment Calculator</span>
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Loan<span>Saver</span>
+      </a>
+      <span class="badge-pill">
+        ⚡ Smart Prepayment Engine
+      </span>
     </div>
   </header>
 
-  <div class="main-container">
+  <div class="app-container">
     
-    <!-- Hero Title -->
-    <div class="hero-text">
+    <!-- Title Area -->
+    <div class="hero-header">
       <h1>Home Loan Prepayment & Savings Calculator</h1>
-      <p>Calculate how much interest and tenure you save by adding regular extra EMI contributions.</p>
+      <p>Simulate how regular extra EMI contributions reduce your interest liability and loan tenure.</p>
     </div>
 
-    <!-- Top Display Ad Unit -->
-    <div class="ad-container" id="top-ad-slot">
+    <!-- Top Responsive Ad Container -->
+    <div class="ad-wrapper" id="top-ad-slot">
       <ins class="adsbygoogle"
            style="display:block; text-align:center;"
            data-ad-layout="in-article"
@@ -372,99 +465,135 @@
       </script>
     </div>
 
-    <!-- Interactive Calculator -->
-    <div class="calc-grid">
+    <!-- Main Layout -->
+    <div class="calculator-layout">
       
-      <!-- Inputs Card -->
-      <div class="card">
-        <div class="card-title">📝 Loan Details</div>
+      <!-- Input Panel -->
+      <div class="app-card">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          Loan Parameters
+        </div>
 
         <!-- Loan Amount -->
-        <div class="input-group">
-          <div class="input-label">
-            <span>Loan Amount (₹)</span>
-            <span class="input-val-display" id="disp-amount">₹50,00,000</span>
+        <div class="field-group">
+          <div class="field-header">
+            <span class="field-label">Loan Principal</span>
+            <span class="field-value-pill" id="disp-amount">₹50,00,000</span>
           </div>
           <input type="range" id="range-amount" min="500000" max="20000000" step="50000" value="5000000" />
-          <input type="number" class="number-input" id="num-amount" value="5000000" />
+          <div class="input-box-wrapper">
+            <input type="number" class="input-box" id="num-amount" value="5000000" />
+          </div>
         </div>
 
         <!-- Interest Rate -->
-        <div class="input-group">
-          <div class="input-label">
-            <span>Interest Rate (% p.a.)</span>
-            <span class="input-val-display" id="disp-rate">8.5%</span>
+        <div class="field-group">
+          <div class="field-header">
+            <span class="field-label">Annual Interest Rate</span>
+            <span class="field-value-pill" id="disp-rate">8.5%</span>
           </div>
-          <input type="range" id="range-rate" min="6.5" max="15.0" step="0.1" value="8.5" />
-          <input type="number" class="number-input" id="num-rate" step="0.1" value="8.5" />
+          <input type="range" id="range-rate" min="6.5" max="16.0" step="0.1" value="8.5" />
+          <div class="input-box-wrapper">
+            <input type="number" class="input-box" id="num-rate" step="0.1" value="8.5" />
+          </div>
         </div>
 
         <!-- Loan Tenure -->
-        <div class="input-group">
-          <div class="input-label">
-            <span>Original Tenure (Years)</span>
-            <span class="input-val-display" id="disp-tenure">20 Years</span>
+        <div class="field-group">
+          <div class="field-header">
+            <span class="field-label">Original Loan Tenure</span>
+            <span class="field-value-pill" id="disp-tenure">20 Years</span>
           </div>
           <input type="range" id="range-tenure" min="5" max="30" step="1" value="20" />
-          <input type="number" class="number-input" id="num-tenure" value="20" />
+          <div class="input-box-wrapper">
+            <input type="number" class="input-box" id="num-tenure" value="20" />
+          </div>
         </div>
 
-        <!-- Monthly Prepayment -->
-        <div class="input-group">
-          <div class="input-label">
-            <span>Extra Monthly Prepayment (₹)</span>
-            <span class="input-val-display" id="disp-prepay">₹5,000</span>
+        <!-- Extra Prepayment -->
+        <div class="field-group">
+          <div class="field-header">
+            <span class="field-label">Extra Monthly Contribution</span>
+            <span class="field-value-pill" id="disp-prepay">₹5,000</span>
           </div>
           <input type="range" id="range-prepay" min="0" max="100000" step="1000" value="5000" />
-          <input type="number" class="number-input" id="num-prepay" value="5000" />
+          <div class="input-box-wrapper">
+            <input type="number" class="input-box" id="num-prepay" value="5000" />
+          </div>
         </div>
 
       </div>
 
-      <!-- Results Card -->
-      <div class="card">
-        <div class="card-title">📊 Savings Summary</div>
-
-        <div class="savings-highlight">
-          <span>Total Interest Saved</span>
-          <h2 id="res-interest-saved">₹0</h2>
+      <!-- Results Panel -->
+      <div class="app-card">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          Savings Summary
         </div>
 
-        <div class="result-row">
-          <span class="result-label">Standard Monthly EMI</span>
-          <span class="result-val" id="res-regular-emi">₹0</span>
+        <!-- Green Highlight Banner -->
+        <div class="savings-card">
+          <div class="eyebrow">Total Estimated Interest Saved</div>
+          <div class="amount" id="res-interest-saved">₹0</div>
         </div>
 
-        <div class="result-row">
-          <span class="result-label">New Monthly Payment</span>
-          <span class="result-val" id="res-total-monthly">₹0</span>
+        <!-- Progress Track Comparison -->
+        <div class="visual-comparison">
+          <div class="bar-label-group">
+            <span>Tenure Acceleration</span>
+            <span id="bar-percentage-text">0% Earlier</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" id="progress-bar"></div>
+          </div>
         </div>
 
-        <div class="result-row">
-          <span class="result-label">New Tenure Duration</span>
-          <span class="result-val green" id="res-new-tenure">0 Years 0 Mos</span>
-        </div>
+        <!-- Details List -->
+        <div class="summary-list">
+          <div class="summary-item">
+            <span class="label">Original Monthly EMI</span>
+            <span class="val" id="res-regular-emi">₹0</span>
+          </div>
 
-        <div class="result-row">
-          <span class="result-label">Total Time Saved</span>
-          <span class="result-val green" id="res-time-saved">0 Years 0 Mos</span>
-        </div>
+          <div class="summary-item">
+            <span class="label">New Monthly Outflow</span>
+            <span class="val" id="res-total-monthly">₹0</span>
+          </div>
 
-        <div class="result-row">
-          <span class="result-label">Original Total Interest</span>
-          <span class="result-val" id="res-original-interest">₹0</span>
-        </div>
+          <div class="summary-item">
+            <span class="label">New Loan Duration</span>
+            <span class="val highlight" id="res-new-tenure">0 Yrs 0 Mos</span>
+          </div>
 
-        <div class="result-row">
-          <span class="result-label">New Total Interest</span>
-          <span class="result-val" id="res-new-interest">₹0</span>
+          <div class="summary-item">
+            <span class="label">Total Time Saved</span>
+            <span class="val highlight" id="res-time-saved">0 Yrs 0 Mos</span>
+          </div>
+
+          <div class="summary-item">
+            <span class="label">Original Total Interest</span>
+            <span class="val" id="res-original-interest">₹0</span>
+          </div>
+
+          <div class="summary-item">
+            <span class="label">New Total Interest</span>
+            <span class="val" id="res-new-interest">₹0</span>
+          </div>
         </div>
 
       </div>
     </div>
 
-    <!-- Mid-Page In-Article Ad Unit -->
-    <div class="ad-container" id="mid-ad-slot">
+    <!-- Mid-Page In-Article Ad Container -->
+    <div class="ad-wrapper" id="mid-ad-slot">
       <ins class="adsbygoogle"
            style="display:block; text-align:center;"
            data-ad-layout="in-article"
@@ -476,50 +605,53 @@
       </script>
     </div>
 
-    <!-- Financial Guide Content -->
-    <div class="content-section">
-      <h2>How Home Loan Prepayment Saves Lakhs</h2>
-      <p>When you service a standard 20 to 30-year home loan, the majority of your early EMI installments go toward paying interest rather than reducing the actual principal balance. By adding even a modest extra monthly contribution directly toward your principal, you compound massive reductions in both the total interest paid and the overall repayment duration.</p>
+    <!-- Educational Financial Guide (Essential for AdSense Compliance) -->
+    <div class="guide-card">
+      <h2>Why Early Prepayment Makes a Major Difference</h2>
+      <p>During the initial stages of a 20 or 30-year home loan, standard amortisation front-loads interest charges. This means a substantial share of your monthly EMI goes directly toward interest rather than paying off the principal amount. Making regular, modest principal prepayments compounds your interest savings and shortens the debt timeline.</p>
       
-      <h2>Key Strategies for Mortgage Prepayment in India</h2>
+      <h2>Core Prepayment Strategies for Indian Home Loans</h2>
       <ul>
-        <li><strong>Add 1 Extra EMI Per Year:</strong> Paying just one additional EMI each calendar year can reduce a 20-year home loan tenure by nearly 4 years.</li>
-        <li><strong>Annual 5% EMI Step-Up:</strong> As your salary increases each financial year, increasing your EMI or prepayments by 5% dramatically speeds up your debt-free timeline.</li>
-        <li><strong>Zero Prepayment Penalties:</strong> Under Reserve Bank of India (RBI) directives, Indian commercial banks and housing finance corporations (HFCs) cannot levy prepayment or foreclosure charges on floating-rate individual home loans.</li>
+        <li><strong>Pay One Additional EMI Every Year:</strong> Contributing equivalent to just one extra monthly payment every 12 months can cut a 20-year loan tenure by 3 to 4 years.</li>
+        <li><strong>5%–10% Annual Step-Up:</strong> As annual salary increments take effect, increasing your regular EMI contribution accelerates your path to becoming debt-free.</li>
+        <li><strong>No Prepayment Penalties on Floating Rates:</strong> Per Reserve Bank of India (RBI) guidelines, banks and housing finance corporations (HFCs) cannot charge foreclosure or prepayment fees on floating-rate individual home loans.</li>
       </ul>
 
       <h2>Frequently Asked Questions</h2>
       
-      <div class="faq-item">
-        <div class="faq-question">Should I reduce my EMI or reduce my loan tenure? <span>+</span></div>
-        <div class="faq-answer">Opting to reduce your loan tenure yields significantly higher total interest savings compared to lowering your monthly EMI amount.</div>
-      </div>
+      <div class="faq-list">
+        <div class="faq-box">
+          <div class="faq-header">
+            <span>Is it better to reduce the tenure or reduce the EMI?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-body">Choosing to shorten the loan tenure generates significantly higher total interest savings compared to keeping the original duration and lowering monthly payments.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Are there any tax implications for prepaying home loans? <span>+</span></div>
-        <div class="faq-answer">Principal prepayments are eligible for tax deductions under Section 80C (up to the overall ₹1.5 Lakh ceiling under the old tax regime).</div>
-      </div>
+        <div class="faq-box">
+          <div class="faq-header">
+            <span>Are there tax deduction benefits for prepaying a home loan?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-body">Principal prepayments qualify under Section 80C deductions (within the overall annual ceiling of ₹1.5 Lakh under the Old Tax Regime).</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Is prepaying a home loan always better than mutual fund investing? <span>+</span></div>
-        <div class="faq-answer">If your loan interest rate is around 8.5% to 9%, prepaying guarantees a risk-free 8.5%–9% effective return. However, if your alternate investments consistently yield 12%+ after taxes, a balanced strategy of investing alongside moderate prepayment is recommended.</div>
+        <div class="faq-box">
+          <div class="faq-header">
+            <span>Should I prepay my mortgage or invest in Mutual Funds?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-body">If your loan rate is 8.5% to 9%, prepaying locks in an effective risk-free return matching that rate. A balanced approach of investing alongside moderate prepayment helps maintain optimal liquidity.</div>
+        </div>
       </div>
 
     </div>
 
   </div>
 
-  <!-- Footer -->
+  <!-- Minimal Footer -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-links">
-        <a href="#about">About Us</a>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <p>© 2026 LoanSaver.in • All calculations are for informational purposes only.</p>
-    </div>
+    <p>© 2026 LoanSaver.in • All calculations are estimates for financial illustration purposes.</p>
   </footer>
 
   <script>
@@ -603,6 +735,8 @@
       const newYears = Math.floor(monthsCount / 12);
       const newMonths = monthsCount % 12;
 
+      const percentSavedTime = Math.min(100, Math.round((totalMonthsSaved / n) * 100));
+
       document.getElementById('res-interest-saved').innerText = formatINR(interestSaved);
       document.getElementById('res-regular-emi').innerText = formatINR(emi);
       document.getElementById('res-total-monthly').innerText = formatINR(totalMonthlyPayment);
@@ -610,13 +744,16 @@
       document.getElementById('res-new-interest').innerText = formatINR(newTotalInterest);
       document.getElementById('res-new-tenure').innerText = `${newYears} Yrs ${newMonths} Mos`;
       document.getElementById('res-time-saved').innerText = `${savedYears} Yrs ${savedMonths} Mos`;
+      
+      document.getElementById('bar-percentage-text').innerText = `${percentSavedTime}% Tenure Saved`;
+      document.getElementById('progress-bar').style.width = `${Math.max(10, percentSavedTime)}%`;
     }
 
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        q.parentElement.classList.toggle('active');
-        const span = q.querySelector('span');
-        span.innerText = q.parentElement.classList.contains('active') ? '−' : '+';
+    document.querySelectorAll('.faq-box').forEach(box => {
+      box.addEventListener('click', () => {
+        box.classList.toggle('active');
+        const icon = box.querySelector('.faq-header span:last-child');
+        icon.innerText = box.classList.contains('active') ? '−' : '+';
       });
     });
 
