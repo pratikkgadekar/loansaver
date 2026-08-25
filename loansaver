@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoanSaver.in | Home Loan Prepayment & EMI Savings Calculator</title>
+  <meta name="description" content="Calculate how much interest and tenure you save by making extra monthly or annual prepayments on your home loan. Free, instant, and privacy-first." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #10b981;
+      --surface: #ffffff;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo span {
+      color: var(--text);
+    }
+
+    .badge {
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .hero-text {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* Ad Units */
+    .ad-slot {
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    /* Calculator Grid */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .input-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 0.4rem;
+    }
+
+    .input-val-display {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .number-input {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s ease;
+      margin-top: 0.25rem;
+    }
+
+    .number-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Results */
+    .savings-highlight {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 1.25rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .savings-highlight span {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+
+    .savings-highlight h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-top: 0.25rem;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .result-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .result-val {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .result-val.green {
+      color: var(--success);
+    }
+
+    /* Content & Guide Section */
+    .content-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .content-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.75rem 0;
+      color: #0f172a;
+    }
+
+    .content-section h2:first-child {
+      margin-top: 0;
+    }
+
+    .content-section p {
+      color: #475569;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .content-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #475569;
+    }
+
+    .content-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: #0f172a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 2.5rem 1rem 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">Loan<span>Saver</span></a>
+      <span class="badge">Instant Prepayment Calculator</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    
+    <!-- Hero Title -->
+    <div class="hero-text">
+      <h1>Home Loan Prepayment & Savings Calculator</h1>
+      <p>Calculate how much interest and tenure you save by adding regular extra EMI contributions.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot" id="top-ad-slot">
+      <span>Advertisement Slot (AdSense Banner)</span>
+    </div>
+
+    <!-- Interactive Calculator -->
+    <div class="calc-grid">
+      
+      <!-- Inputs Card -->
+      <div class="card">
+        <div class="card-title">📝 Loan Details</div>
+
+        <!-- Loan Amount -->
+        <div class="input-group">
+          <div class="input-label">
+            <span>Loan Amount (₹)</span>
+            <span class="input-val-display" id="disp-amount">₹50,00,000</span>
+          </div>
+          <input type="range" id="range-amount" min="500000" max="20000000" step="50000" value="5000000" />
+          <input type="number" class="number-input" id="num-amount" value="5000000" />
+        </div>
+
+        <!-- Interest Rate -->
+        <div class="input-group">
+          <div class="input-label">
+            <span>Interest Rate (% p.a.)</span>
+            <span class="input-val-display" id="disp-rate">8.5%</span>
+          </div>
+          <input type="range" id="range-rate" min="6.5" max="15.0" step="0.1" value="8.5" />
+          <input type="number" class="number-input" id="num-rate" step="0.1" value="8.5" />
+        </div>
+
+        <!-- Loan Tenure -->
+        <div class="input-group">
+          <div class="input-label">
+            <span>Original Tenure (Years)</span>
+            <span class="input-val-display" id="disp-tenure">20 Years</span>
+          </div>
+          <input type="range" id="range-tenure" min="5" max="30" step="1" value="20" />
+          <input type="number" class="number-input" id="num-tenure" value="20" />
+        </div>
+
+        <!-- Monthly Prepayment -->
+        <div class="input-group">
+          <div class="input-label">
+            <span>Extra Monthly Prepayment (₹)</span>
+            <span class="input-val-display" id="disp-prepay">₹5,000</span>
+          </div>
+          <input type="range" id="range-prepay" min="0" max="100000" step="1000" value="5000" />
+          <input type="number" class="number-input" id="num-prepay" value="5000" />
+        </div>
+
+      </div>
+
+      <!-- Results Card -->
+      <div class="card">
+        <div class="card-title">📊 Savings Summary</div>
+
+        <div class="savings-highlight">
+          <span>Total Interest Saved</span>
+          <h2 id="res-interest-saved">₹0</h2>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Standard Monthly EMI</span>
+          <span class="result-val" id="res-regular-emi">₹0</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">New Monthly Payment</span>
+          <span class="result-val" id="res-total-monthly">₹0</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">New Tenure Duration</span>
+          <span class="result-val green" id="res-new-tenure">0 Years 0 Mos</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Total Time Saved</span>
+          <span class="result-val green" id="res-time-saved">0 Years 0 Mos</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Original Total Interest</span>
+          <span class="result-val" id="res-original-interest">₹0</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">New Total Interest</span>
+          <span class="result-val" id="res-new-interest">₹0</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mid-Page Ad Placement -->
+    <div class="ad-slot" id="mid-ad-slot">
+      <span>Advertisement Slot (AdSense In-Article)</span>
+    </div>
+
+    <!-- Educational Financial Guide (Ensures AdSense Approval) -->
+    <div class="content-section">
+      <h2>How Home Loan Prepayment Saves Lakhs</h2>
+      <p>When you service a standard 20 to 30-year home loan, the majority of your early EMI installments go toward paying interest rather than reducing the actual principal balance. By adding even a modest extra monthly contribution directly toward your principal, you compound massive reductions in both the total interest paid and the overall repayment duration.</p>
+      
+      <h2>Key Strategies for Mortgage Prepayment in India</h2>
+      <ul>
+        <li><strong>Add 1 Extra EMI Per Year:</strong> Paying just one additional EMI each calendar year can reduce a 20-year home loan tenure by nearly 4 years.</li>
+        <li><strong>Annual 5% EMI Step-Up:</strong> As your salary increases each financial year, increasing your EMI or prepayments by 5% dramatically speeds up your debt-free timeline.</li>
+        <li><strong>Zero Prepayment Penalties:</strong> Under Reserve Bank of India (RBI) directives, Indian commercial banks and housing finance corporations (HFCs) cannot levy prepayment or foreclosure charges on floating-rate individual home loans.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">Should I reduce my EMI or reduce my loan tenure? <span>+</span></div>
+        <div class="faq-answer">Opting to reduce your loan tenure yields significantly higher total interest savings compared to lowering your monthly EMI amount.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Are there any tax implications for prepaying home loans? <span>+</span></div>
+        <div class="faq-answer">Principal prepayments are eligible for tax deductions under Section 80C (up to the overall ₹1.5 Lakh ceiling under the old tax regime).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is prepaying a home loan always better than mutual fund investing? <span>+</span></div>
+        <div class="faq-answer">If your loan interest rate is around 8.5% to 9%, prepaying guarantees a risk-free 8.5%–9% effective return. However, if your alternate investments consistently yield 12%+ after taxes, a balanced strategy of investing alongside moderate prepayment is recommended.</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p>© 2026 LoanSaver.in • All calculations are for informational purposes only.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Format Currency to INR
+    function formatINR(val) {
+      return '₹' + Math.round(val).toLocaleString('en-IN');
+    }
+
+    // Input elements
+    const rangeAmount = document.getElementById('range-amount');
+    const numAmount = document.getElementById('num-amount');
+    const dispAmount = document.getElementById('disp-amount');
+
+    const rangeRate = document.getElementById('range-rate');
+    const numRate = document.getElementById('num-rate');
+    const dispRate = document.getElementById('disp-rate');
+
+    const rangeTenure = document.getElementById('range-tenure');
+    const numTenure = document.getElementById('num-tenure');
+    const dispTenure = document.getElementById('disp-tenure');
+
+    const rangePrepay = document.getElementById('range-prepay');
+    const numPrepay = document.getElementById('num-prepay');
+    const dispPrepay = document.getElementById('disp-prepay');
+
+    // Sync input ranges and numbers
+    function sync(range, num, disp, prefix = '', suffix = '') {
+      range.addEventListener('input', () => {
+        num.value = range.value;
+        disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix;
+        calculate();
+      });
+      num.addEventListener('input', () => {
+        range.value = num.value;
+        disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix;
+        calculate();
+      });
+    }
+
+    sync(rangeAmount, numAmount, dispAmount, '₹', '');
+    sync(rangeRate, numRate, dispRate, '', '%');
+    sync(rangeTenure, numTenure, dispTenure, '', ' Years');
+    sync(rangePrepay, numPrepay, dispPrepay, '₹', '');
+
+    // Core Calculation Logic
+    function calculate() {
+      const P = parseFloat(numAmount.value) || 0;
+      const annualR = parseFloat(numRate.value) || 0;
+      const tenureYears = parseFloat(numTenure.value) || 0;
+      const extraMonthly = parseFloat(numPrepay.value) || 0;
+
+      const r = (annualR / 12) / 100;
+      const n = tenureYears * 12;
+
+      if (P <= 0 || r <= 0 || n <= 0) return;
+
+      // Standard Monthly EMI Formula: E = P * r * (1+r)^n / ((1+r)^n - 1)
+      const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      const originalTotalPayable = emi * n;
+      const originalTotalInterest = originalTotalPayable - P;
+
+      // Amortization simulation with monthly extra prepayments
+      let balance = P;
+      let newTotalInterest = 0;
+      let monthsCount = 0;
+      const totalMonthlyPayment = emi + extraMonthly;
+
+      while (balance > 0 && monthsCount < n + 120) {
+        const monthlyInterest = balance * r;
+        newTotalInterest += monthlyInterest;
+        let principalPaid = totalMonthlyPayment - monthlyInterest;
+
+        if (balance - principalPaid <= 0) {
+          principalPaid = balance;
+          balance = 0;
+        } else {
+          balance -= principalPaid;
+        }
+        monthsCount++;
+      }
+
+      const interestSaved = Math.max(0, originalTotalInterest - newTotalInterest);
+      const totalMonthsSaved = Math.max(0, n - monthsCount);
+      const savedYears = Math.floor(totalMonthsSaved / 12);
+      const savedMonths = totalMonthsSaved % 12;
+
+      const newYears = Math.floor(monthsCount / 12);
+      const newMonths = monthsCount % 12;
+
+      // Render Outputs
+      document.getElementById('res-interest-saved').innerText = formatINR(interestSaved);
+      document.getElementById('res-regular-emi').innerText = formatINR(emi);
+      document.getElementById('res-total-monthly').innerText = formatINR(totalMonthlyPayment);
+      document.getElementById('res-original-interest').innerText = formatINR(originalTotalInterest);
+      document.getElementById('res-new-interest').innerText = formatINR(newTotalInterest);
+      document.getElementById('res-new-tenure').innerText = `${newYears} Yrs ${newMonths} Mos`;
+      document.getElementById('res-time-saved').innerText = `${savedYears} Yrs ${savedMonths} Mos`;
+    }
+
+    // FAQ Accordion toggles
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('active');
+        const span = q.querySelector('span');
+        span.innerText = q.parentElement.classList.contains('active') ? '−' : '+';
+      });
+    });
+
+    // Run initial calculation on load
+    calculate();
+  </script>
+</body>
+</html>
