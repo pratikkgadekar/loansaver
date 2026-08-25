@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LoanSaver.in | Home Loan Prepayment & EMI Savings Calculator</title>
   <meta name="description" content="Calculate how much interest and tenure you save by making extra monthly or annual prepayments on your home loan. Free, instant, and privacy-first." />
+  
+  <!-- Google AdSense Verification & Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -102,19 +106,16 @@
       font-size: 1.05rem;
     }
 
-    /* Ad Units */
-    .ad-slot {
-      background: #f1f5f9;
-      border: 1px dashed #cbd5e1;
-      border-radius: 12px;
+    /* Ad Container Units */
+    .ad-container {
+      margin: 1.5rem 0;
       min-height: 90px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin: 1.5rem 0;
+      align-items: center;
+      background: transparent;
       text-align: center;
+      overflow: hidden;
     }
 
     /* Calculator Grid */
@@ -193,7 +194,7 @@
       border-color: var(--primary);
     }
 
-    /* Results */
+    /* Results Card */
     .savings-highlight {
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: white;
@@ -242,7 +243,7 @@
       color: var(--success);
     }
 
-    /* Content & Guide Section */
+    /* Content / SEO & Compliance Guide */
     .content-section {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -278,7 +279,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* FAQ Accordion */
+    /* FAQ */
     .faq-item {
       border-bottom: 1px solid var(--border);
       padding: 1rem 0;
@@ -346,7 +347,7 @@
   <header>
     <div class="header-container">
       <a href="#" class="logo">Loan<span>Saver</span></a>
-      <span class="badge">Instant Prepayment Calculator</span>
+      <span class="badge">Prepayment Calculator</span>
     </div>
   </header>
 
@@ -358,9 +359,17 @@
       <p>Calculate how much interest and tenure you save by adding regular extra EMI contributions.</p>
     </div>
 
-    <!-- Top Ad Placement -->
-    <div class="ad-slot" id="top-ad-slot">
-      <span>Advertisement Slot (AdSense Banner)</span>
+    <!-- Top Display Ad Unit -->
+    <div class="ad-container" id="top-ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-2884422236657572"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
     <!-- Interactive Calculator -->
@@ -454,12 +463,20 @@
       </div>
     </div>
 
-    <!-- Mid-Page Ad Placement -->
-    <div class="ad-slot" id="mid-ad-slot">
-      <span>Advertisement Slot (AdSense In-Article)</span>
+    <!-- Mid-Page In-Article Ad Unit -->
+    <div class="ad-container" id="mid-ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-2884422236657572"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
-    <!-- Educational Financial Guide (Ensures AdSense Approval) -->
+    <!-- Financial Guide Content -->
     <div class="content-section">
       <h2>How Home Loan Prepayment Saves Lakhs</h2>
       <p>When you service a standard 20 to 30-year home loan, the majority of your early EMI installments go toward paying interest rather than reducing the actual principal balance. By adding even a modest extra monthly contribution directly toward your principal, you compound massive reductions in both the total interest paid and the overall repayment duration.</p>
@@ -506,12 +523,10 @@
   </footer>
 
   <script>
-    // Format Currency to INR
     function formatINR(val) {
       return '₹' + Math.round(val).toLocaleString('en-IN');
     }
 
-    // Input elements
     const rangeAmount = document.getElementById('range-amount');
     const numAmount = document.getElementById('num-amount');
     const dispAmount = document.getElementById('disp-amount');
@@ -528,7 +543,6 @@
     const numPrepay = document.getElementById('num-prepay');
     const dispPrepay = document.getElementById('disp-prepay');
 
-    // Sync input ranges and numbers
     function sync(range, num, disp, prefix = '', suffix = '') {
       range.addEventListener('input', () => {
         num.value = range.value;
@@ -547,7 +561,6 @@
     sync(rangeTenure, numTenure, dispTenure, '', ' Years');
     sync(rangePrepay, numPrepay, dispPrepay, '₹', '');
 
-    // Core Calculation Logic
     function calculate() {
       const P = parseFloat(numAmount.value) || 0;
       const annualR = parseFloat(numRate.value) || 0;
@@ -559,12 +572,10 @@
 
       if (P <= 0 || r <= 0 || n <= 0) return;
 
-      // Standard Monthly EMI Formula: E = P * r * (1+r)^n / ((1+r)^n - 1)
       const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
       const originalTotalPayable = emi * n;
       const originalTotalInterest = originalTotalPayable - P;
 
-      // Amortization simulation with monthly extra prepayments
       let balance = P;
       let newTotalInterest = 0;
       let monthsCount = 0;
@@ -592,7 +603,6 @@
       const newYears = Math.floor(monthsCount / 12);
       const newMonths = monthsCount % 12;
 
-      // Render Outputs
       document.getElementById('res-interest-saved').innerText = formatINR(interestSaved);
       document.getElementById('res-regular-emi').innerText = formatINR(emi);
       document.getElementById('res-total-monthly').innerText = formatINR(totalMonthlyPayment);
@@ -602,7 +612,6 @@
       document.getElementById('res-time-saved').innerText = `${savedYears} Yrs ${savedMonths} Mos`;
     }
 
-    // FAQ Accordion toggles
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => {
         q.parentElement.classList.toggle('active');
@@ -611,7 +620,6 @@
       });
     });
 
-    // Run initial calculation on load
     calculate();
   </script>
 </body>
