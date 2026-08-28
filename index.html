@@ -3,11 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LoanSaver.in | Smart Home Loan Prepayment & Tenure Reducer Calculator</title>
-  <meta name="description" content="Calculate how much interest and loan tenure you save by making extra monthly prepayments on your home loan. Free, interactive, and privacy-first." />
   
+  <!-- Primary Meta SEO Tags -->
+  <title>LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator</title>
+  <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator" />
+  <meta name="description" content="Calculate how much interest and tenure you save by paying extra monthly prepayments on your home loan. Free, accurate, and privacy-first Indian mortgage calculator." />
+  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan interest savings, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.loansaver.in/" />
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.loansaver.in/" />
+  <meta property="og:title" content="LoanSaver.in | Calculate Your Home Loan Prepayment Savings" />
+  <meta property="og:description" content="See how adding just ₹2,000–₹5,000 extra per month can save you ₹15+ Lakhs in interest and shorten your loan by years." />
+  <meta property="og:site_name" content="LoanSaver" />
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.loansaver.in/" />
+  <meta property="twitter:title" content="LoanSaver.in | Smart Home Loan Prepayment Calculator" />
+  <meta property="twitter:description" content="Calculate interest savings & tenure reduction instantly with extra EMI contributions." />
+
   <!-- Google AdSense Verification & Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Structured Data Schema for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "LoanSaver Home Loan Prepayment Calculator",
+        "url": "https://www.loansaver.in/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "description": "Free interactive financial calculator to determine interest and tenure reduction from home loan prepayments."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is it better to reduce loan tenure or reduce EMI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reducing the loan tenure yields significantly higher total interest savings compared to lowering monthly EMI payments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there prepayment penalties on home loans in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under RBI guidelines, Indian banks and housing finance corporations cannot charge prepayment penalties on individual floating-rate home loans."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +80,6 @@
       --primary: #2563eb;
       --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       --emerald-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      --accent: #f59e0b;
       --surface: #ffffff;
       --bg: #f8fafc;
       --text: #0f172a;
@@ -44,7 +105,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Navbar */
     header {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
@@ -91,7 +151,6 @@
       gap: 0.35rem;
     }
 
-    /* Main Container */
     .app-container {
       max-width: 1120px;
       margin: 2.5rem auto 3rem;
@@ -119,7 +178,6 @@
       font-weight: 500;
     }
 
-    /* Ad Container */
     .ad-wrapper {
       margin: 1.5rem 0;
       min-height: 90px;
@@ -130,7 +188,6 @@
       overflow: hidden;
     }
 
-    /* Calculator Grid */
     .calculator-layout {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -171,7 +228,6 @@
       gap: 0.6rem;
     }
 
-    /* Input Controls */
     .field-group {
       margin-bottom: 1.4rem;
     }
@@ -233,7 +289,6 @@
       margin-top: 0.3rem;
     }
 
-    /* Savings Hero Banner */
     .savings-card {
       background: var(--emerald-gradient);
       color: #ffffff;
@@ -259,7 +314,6 @@
       margin-top: 0.2rem;
     }
 
-    /* Visual Comparison Bar */
     .visual-comparison {
       background: #f1f5f9;
       border-radius: 12px;
@@ -292,7 +346,6 @@
       transition: width 0.3s ease;
     }
 
-    /* Output Summary Rows */
     .summary-list {
       display: flex;
       flex-direction: column;
@@ -329,7 +382,6 @@
       border-radius: 6px;
     }
 
-    /* Knowledge Guide Section */
     .guide-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -368,7 +420,6 @@
       font-size: 0.95rem;
     }
 
-    /* FAQ Section */
     .faq-list {
       margin-top: 1rem;
       display: flex;
@@ -415,7 +466,6 @@
       border-color: #cbd5e1;
     }
 
-    /* Clean Minimal Footer (No About/Contact) */
     footer {
       background: #ffffff;
       border-top: 1px solid var(--border);
@@ -428,7 +478,6 @@
 </head>
 <body>
 
-  <!-- Clean Top Bar -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand-logo">
@@ -438,21 +487,17 @@
         </svg>
         Loan<span>Saver</span>
       </a>
-      <span class="badge-pill">
-        ⚡ Smart Prepayment Engine
-      </span>
+      <span class="badge-pill">⚡ Smart Prepayment Engine</span>
     </div>
   </header>
 
   <div class="app-container">
     
-    <!-- Title Area -->
     <div class="hero-header">
       <h1>Home Loan Prepayment & Savings Calculator</h1>
       <p>Simulate how regular extra EMI contributions reduce your interest liability and loan tenure.</p>
     </div>
 
-    <!-- Top Responsive Ad Container -->
     <div class="ad-wrapper" id="top-ad-slot">
       <ins class="adsbygoogle"
            style="display:block; text-align:center;"
@@ -465,10 +510,8 @@
       </script>
     </div>
 
-    <!-- Main Layout -->
     <div class="calculator-layout">
       
-      <!-- Input Panel -->
       <div class="app-card">
         <div class="card-header">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -478,7 +521,6 @@
           Loan Parameters
         </div>
 
-        <!-- Loan Amount -->
         <div class="field-group">
           <div class="field-header">
             <span class="field-label">Loan Principal</span>
@@ -490,7 +532,6 @@
           </div>
         </div>
 
-        <!-- Interest Rate -->
         <div class="field-group">
           <div class="field-header">
             <span class="field-label">Annual Interest Rate</span>
@@ -502,7 +543,6 @@
           </div>
         </div>
 
-        <!-- Loan Tenure -->
         <div class="field-group">
           <div class="field-header">
             <span class="field-label">Original Loan Tenure</span>
@@ -514,7 +554,6 @@
           </div>
         </div>
 
-        <!-- Extra Prepayment -->
         <div class="field-group">
           <div class="field-header">
             <span class="field-label">Extra Monthly Contribution</span>
@@ -528,7 +567,6 @@
 
       </div>
 
-      <!-- Results Panel -->
       <div class="app-card">
         <div class="card-header">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -539,13 +577,11 @@
           Savings Summary
         </div>
 
-        <!-- Green Highlight Banner -->
         <div class="savings-card">
           <div class="eyebrow">Total Estimated Interest Saved</div>
           <div class="amount" id="res-interest-saved">₹0</div>
         </div>
 
-        <!-- Progress Track Comparison -->
         <div class="visual-comparison">
           <div class="bar-label-group">
             <span>Tenure Acceleration</span>
@@ -556,7 +592,6 @@
           </div>
         </div>
 
-        <!-- Details List -->
         <div class="summary-list">
           <div class="summary-item">
             <span class="label">Original Monthly EMI</span>
@@ -592,7 +627,6 @@
       </div>
     </div>
 
-    <!-- Mid-Page In-Article Ad Container -->
     <div class="ad-wrapper" id="mid-ad-slot">
       <ins class="adsbygoogle"
            style="display:block; text-align:center;"
@@ -605,7 +639,6 @@
       </script>
     </div>
 
-    <!-- Educational Financial Guide (Essential for AdSense Compliance) -->
     <div class="guide-card">
       <h2>Why Early Prepayment Makes a Major Difference</h2>
       <p>During the initial stages of a 20 or 30-year home loan, standard amortisation front-loads interest charges. This means a substantial share of your monthly EMI goes directly toward interest rather than paying off the principal amount. Making regular, modest principal prepayments compounds your interest savings and shortens the debt timeline.</p>
@@ -649,7 +682,6 @@
 
   </div>
 
-  <!-- Minimal Footer -->
   <footer>
     <p>© 2026 LoanSaver.in • All calculations are estimates for financial illustration purposes.</p>
   </footer>
