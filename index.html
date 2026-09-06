@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>LoanSaver.in | Home Loan Prepayment & Amortization Calculator</title>
+  <title>LoanSaver.in | Home Loan Prepayment, SIP Comparison & Amortization Calculator</title>
   <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator" />
-  <meta name="description" content="Calculate how much interest and tenure you save by paying extra monthly or lump-sum prepayments on your home loan. Free Indian mortgage calculator with amortization schedule." />
-  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan interest savings, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure, amortization schedule India" />
+  <meta name="description" content="Free Indian mortgage calculator. Compare home loan prepayment savings vs. mutual fund SIP returns, view amortization schedules, and check latest RBI prepayment rules." />
+  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan vs mutual fund SIP, rbi home loan prepayment rules, reduce loan tenure, amortization schedule India" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.loansaver.in/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.loansaver.in/" />
-  <meta property="og:title" content="LoanSaver.in | Calculate Your Home Loan Prepayment Savings" />
-  <meta property="og:description" content="See how adding extra payments can save you Lakhs in interest and shorten your loan by years." />
+  <meta property="og:title" content="LoanSaver.in | Smart Home Loan & Financial Comparison Hub" />
+  <meta property="og:description" content="Calculate interest savings, compare loan prepayments with mutual fund SIP yields, and plan your debt-free journey." />
   <meta property="og:site_name" content="LoanSaver" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "LoanSaver Home Loan Prepayment Calculator",
+        "name": "LoanSaver Financial & Mortgage Suite",
         "url": "https://www.loansaver.in/",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
@@ -34,7 +34,7 @@
           "price": "0",
           "priceCurrency": "INR"
         },
-        "description": "Free interactive financial calculator to determine interest and tenure reduction from home loan prepayments."
+        "description": "Interactive financial calculators to determine home loan prepayments and investment comparisons."
       },
       {
         "@type": "FAQPage",
@@ -49,10 +49,10 @@
           },
           {
             "@type": "Question",
-            "name": "Are there prepayment penalties on home loans in India?",
+            "name": "Are there prepayment penalties on home loans in India under RBI rules?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Under RBI guidelines, Indian banks and housing finance corporations cannot charge prepayment penalties on individual floating-rate home loans."
+              "text": "Under RBI guidelines, lenders cannot charge prepayment or foreclosure penalties on individual floating-rate home loans taken for non-business purposes."
             }
           }
         ]
@@ -76,7 +76,6 @@
       --muted: #64748b;
       --border: #e2e8f0;
       --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-      --card-shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
       --input-bg: #f8fafc;
     }
 
@@ -90,7 +89,6 @@
       --muted: #94a3b8;
       --border: #334155;
       --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
       --input-bg: #0f172a;
     }
 
@@ -163,24 +161,22 @@
       gap: 0.35rem;
     }
 
-    /* Theme Toggle Button Styling */
-    .theme-toggle-btn {
+    /* Clear Understanding Theme Toggle Switcher */
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--bg);
       border: 1.5px solid var(--border);
-      color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
       cursor: pointer;
-      font-size: 1.15rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
-    .theme-toggle-btn:hover {
-      border-color: var(--primary);
+    .theme-switch-wrapper span {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
     }
 
     .app-container {
@@ -192,7 +188,7 @@
     .hero-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.5rem;
     }
 
     .hero-header h1 {
@@ -210,12 +206,12 @@
       font-weight: 500;
     }
 
-    /* Tabs Styling */
+    /* Prominent Top Navigation Tabs */
     .calc-tabs {
       display: flex;
       justify-content: center;
       gap: 0.75rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
     }
 
@@ -224,10 +220,11 @@
       border: 1.5px solid var(--border);
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.6rem 1.25rem;
-      border-radius: 10px;
+      font-size: 0.92rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 12px;
       cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       transition: all 0.2s ease;
     }
 
@@ -235,7 +232,7 @@
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
     }
 
     .tab-content {
@@ -531,6 +528,40 @@
       font-size: 0.95rem;
     }
 
+    .resource-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resource-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .resource-card:hover {
+      border-color: var(--primary);
+    }
+
+    .resource-card strong {
+      font-size: 0.92rem;
+      color: var(--primary);
+    }
+
+    .resource-card span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
     .faq-list {
       margin-top: 1rem;
       display: flex;
@@ -647,7 +678,11 @@
       </a>
       <div class="nav-right">
         <span class="badge-pill">⚡ Pro Mortgage Suite</span>
-        <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">🌙</button>
+        
+        <div class="theme-switch-wrapper" onclick="toggleTheme()" title="Click to switch theme">
+          <span>Mode:</span>
+          <strong id="theme-label">Light ☀️</strong>
+        </div>
       </div>
     </div>
   </header>
@@ -660,8 +695,8 @@
     </div>
 
     <div class="calc-tabs">
-      <button class="tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI</button>
-      <button class="tab-btn" onclick="switchTab('annual')">Annual Lump-Sum</button>
+      <button class="tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI Calculator</button>
+      <button class="tab-btn" onclick="switchTab('annual')">Annual Lump-Sum Planner</button>
       <button class="tab-btn" onclick="switchTab('sip')">Prepay vs. Mutual Fund SIP</button>
     </div>
 
@@ -821,9 +856,7 @@
     <div id="tab-sip" class="tab-content">
       <div class="calculator-layout">
         <div class="app-card">
-          <div class="card-header">
-            📊 Comparison Parameters
-          </div>
+          <div class="card-header">📊 Comparison Parameters</div>
           <div class="field-group">
             <div class="field-header"><span class="field-label">Monthly Extra Amount Available</span><span class="field-value-pill" id="disp-sip-amt">₹10,000</span></div>
             <input type="range" id="range-sip-amt" min="2000" max="50000" step="1000" value="10000" />
@@ -850,9 +883,7 @@
         </div>
 
         <div class="app-card">
-          <div class="card-header">
-            💡 Wealth Comparison Verdict
-          </div>
+          <div class="card-header">💡 Wealth Comparison Verdict</div>
           <div class="savings-card" id="sip-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
             <div class="eyebrow">Better Financial Choice</div>
             <div class="amount" id="res-sip-winner" style="font-size: 1.6rem;">Mutual Fund SIP Yields Higher Wealth</div>
@@ -904,15 +935,29 @@
     </div>
 
     <div class="content-section">
-      <h2>Comprehensive Guide to Indian Home Loan Prepayments</h2>
+      <h2>Comprehensive Guide to Indian Home Loan Prepayments & RBI Rules</h2>
       <p>Buying a home in metropolitan hubs like Pune, Mumbai, Bengaluru, or Delhi typically involves securing a long-term mortgage spanning 20 to 30 years. While Equated Monthly Installments (EMIs) make property acquisition manageable, standard bank amortization front-loads interest payments. During the first half of your loan tenure, up to 70% of your monthly remittance goes straight toward interest charges rather than settling the principal debt.</p>
       
-      <h2>Core Prepayment Strategies for Indian Borrowers</h2>
-      <ul>
-        <li><strong>Commit to One Additional EMI Yearly:</strong> Contributing one extra EMI each year slices 3 to 4 years off a standard 20-year term.</li>
-        <li><strong>The 10% Annual Step-Up:</strong> As corporate salary increments take effect, scaling up your extra contribution annually accelerates debt freedom.</li>
-        <li><strong>Zero Penalties on Floating Rates:</strong> Per Reserve Bank of India (RBI) regulations, banks and housing finance corporations cannot levy prepayment charges on individual floating-rate housing loans.</li>
-      </ul>
+      <h2>RBI Prepayment & Foreclosure Guidelines</h2>
+      <p>Under official Reserve Bank of India (RBI) regulations, regulated commercial banks, co-operative banks, and housing finance companies (HFCs) <strong>cannot levy any prepayment or foreclosure penalties</strong> on individual floating-rate housing loans taken for non-business purposes. This gives borrowers full freedom to prepay partially or fully without lock-in periods.</p>
+
+      <h2>Recommended External Resources & Official Portals</h2>
+      <p>For further verification and official policy updates, refer to these trusted portals:</p>
+      
+      <div class="resource-links-grid">
+        <a href="https://www.rbi.org.in" target="_blank" rel="noopener" class="resource-card">
+          <strong>Reserve Bank of India (RBI)</strong>
+          <span>Check master circulars on retail loans and interest rate notifications.</span>
+        </a>
+        <a href="https://www.nhb.org.in" target="_blank" rel="noopener" class="resource-card">
+          <strong>National Housing Bank (NHB)</strong>
+          <span>Regulatory framework governing housing finance companies in India.</span>
+        </a>
+        <a href="https://www.incometax.gov.in" target="_blank" rel="noopener" class="resource-card">
+          <strong>Income Tax Department India</strong>
+          <span>Verify Section 80C and Section 24(b) home loan tax deduction limits.</span>
+        </a>
+      </div>
 
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
@@ -942,13 +987,13 @@
     /* Theme Toggle Functionality */
     function toggleTheme() {
       const html = document.documentElement;
-      const btn = document.getElementById('theme-btn');
+      const label = document.getElementById('theme-label');
       if (html.getAttribute('data-theme') === 'light') {
         html.setAttribute('data-theme', 'dark');
-        btn.innerText = '☀️';
+        label.innerText = 'Dark 🌙';
       } else {
         html.setAttribute('data-theme', 'light');
-        btn.innerText = '🌙';
+        label.innerText = 'Light ☀️';
       }
     }
 
@@ -956,7 +1001,7 @@
     const tips = [
       "💡 Pro Tip: Paying just ₹5,000 extra a month can save you lakhs in interest!",
       "🇮🇳 RBI rules state zero prepayment penalties on floating rate home loans!",
-      "📈 Compare your loan rate with Mutual Fund SIP returns using our comparison tab!",
+      "📈 Compare your loan rate with Mutual Fund SIP returns using our tabs above!",
       "🏠 Shortening your loan tenure saves much more than reducing your monthly EMI."
     ];
     let tipIndex = 0;
