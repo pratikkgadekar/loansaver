@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator</title>
+  <title>LoanSaver.in | Home Loan Prepayment, SIP Comparison & Amortization Calculator</title>
   <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator" />
-  <meta name="description" content="Calculate how much interest and tenure you save by paying extra monthly or lump-sum prepayments on your home loan. Free Indian mortgage calculator with amortization schedule." />
-  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan interest savings, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure, amortization schedule India" />
+  <meta name="description" content="Free Indian mortgage calculator. Compare home loan prepayment savings vs. mutual fund SIP returns, view amortization schedules, and reduce your loan tenure." />
+  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan vs mutual fund SIP, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure, amortization schedule India" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.loansaver.in/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.loansaver.in/" />
-  <meta property="og:title" content="LoanSaver.in | Calculate Your Home Loan Prepayment Savings" />
-  <meta property="og:description" content="See how adding extra payments can save you Lakhs in interest and shorten your loan by years." />
+  <meta property="og:title" content="LoanSaver.in | Smart Home Loan & Financial Comparison Hub" />
+  <meta property="og:description" content="Calculate interest savings, compare loan prepayments with mutual fund SIP yields, and plan your debt-free journey." />
   <meta property="og:site_name" content="LoanSaver" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "LoanSaver Home Loan Prepayment Calculator",
+        "name": "LoanSaver Financial & Mortgage Suite",
         "url": "https://www.loansaver.in/",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
@@ -34,7 +34,7 @@
           "price": "0",
           "priceCurrency": "INR"
         },
-        "description": "Free interactive financial calculator to determine interest and tenure reduction from home loan prepayments."
+        "description": "Interactive financial calculators to determine home loan prepayments and investment comparisons."
       },
       {
         "@type": "FAQPage",
@@ -49,10 +49,10 @@
           },
           {
             "@type": "Question",
-            "name": "Are there prepayment penalties on home loans in India?",
+            "name": "Should I prepay my home loan or invest in mutual funds?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Under RBI guidelines, Indian banks and housing finance corporations cannot charge prepayment penalties on individual floating-rate home loans."
+              "text": "If your loan interest rate is 8.5% to 9%, prepaying locks in an effective risk-free return matching that rate. Compare your expected mutual fund CAGR against your loan rate to decide."
             }
           }
         ]
@@ -77,6 +77,21 @@
       --border: #e2e8f0;
       --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
       --card-shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+      --input-bg: #f8fafc;
+    }
+
+    [data-theme="dark"] {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --emerald-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+      --surface: #1e293b;
+      --bg: #0f172a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+      --input-bg: #0f172a;
     }
 
     * {
@@ -84,11 +99,12 @@
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
     body {
-      background: #f8fafc;
-      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background: var(--bg);
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
       background-size: 24px 24px;
       color: var(--text);
       line-height: 1.6;
@@ -96,7 +112,7 @@
     }
 
     header {
-      background: rgba(255, 255, 255, 0.85);
+      background: var(--surface);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -125,20 +141,40 @@
     }
 
     .brand-logo span {
-      color: #0f172a;
+      color: var(--text);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     .badge-pill {
-      background: #eff6ff;
+      background: var(--bg);
       color: var(--primary);
       font-size: 0.75rem;
       font-weight: 700;
       padding: 0.3rem 0.8rem;
       border-radius: 9999px;
-      border: 1px solid #bfdbfe;
+      border: 1px solid var(--border);
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.1rem;
     }
 
     .app-container {
@@ -157,7 +193,7 @@
       font-size: 2.35rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      color: #0f172a;
+      color: var(--text);
       line-height: 1.2;
       margin-bottom: 0.6rem;
     }
@@ -174,10 +210,11 @@
       justify-content: center;
       gap: 0.75rem;
       margin-bottom: 1.75rem;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
-      background: #ffffff;
+      background: var(--surface);
       border: 1.5px solid var(--border);
       color: var(--muted);
       font-weight: 700;
@@ -211,7 +248,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffffff;
+      background: var(--surface);
       border: 1px dashed var(--border);
       border-radius: 12px;
       overflow: hidden;
@@ -240,13 +277,12 @@
       border-radius: 20px;
       padding: 2rem;
       box-shadow: var(--card-shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card-header {
       font-size: 1.2rem;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--text);
       margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
@@ -267,16 +303,17 @@
     .field-label {
       font-size: 0.88rem;
       font-weight: 600;
-      color: #334155;
+      color: var(--muted);
     }
 
     .field-value-pill {
-      background: #eff6ff;
+      background: var(--bg);
       color: var(--primary);
       font-weight: 700;
       font-size: 0.88rem;
       padding: 0.2rem 0.6rem;
       border-radius: 6px;
+      border: 1px solid var(--border);
     }
 
     .input-box-wrapper {
@@ -289,16 +326,14 @@
       padding: 0.75rem 0.9rem;
       font-size: 1rem;
       font-weight: 600;
-      color: #0f172a;
-      background: #f8fafc;
+      color: var(--text);
+      background: var(--input-bg);
       border: 1.5px solid var(--border);
       border-radius: 10px;
       outline: none;
-      transition: all 0.15s ease;
     }
 
     .input-box:focus {
-      background: #ffffff;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
     }
@@ -307,7 +342,7 @@
       width: 100%;
       accent-color: var(--primary);
       height: 6px;
-      background: #e2e8f0;
+      background: var(--border);
       border-radius: 6px;
       outline: none;
       cursor: pointer;
@@ -340,10 +375,11 @@
     }
 
     .visual-comparison {
-      background: #f1f5f9;
+      background: var(--bg);
       border-radius: 12px;
       padding: 1rem;
       margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
     }
 
     .bar-label-group {
@@ -357,7 +393,7 @@
 
     .bar-track {
       height: 12px;
-      background: #e2e8f0;
+      background: var(--border);
       border-radius: 9999px;
       overflow: hidden;
       display: flex;
@@ -397,12 +433,12 @@
 
     .summary-item .val {
       font-weight: 700;
-      color: #0f172a;
+      color: var(--text);
     }
 
     .summary-item .val.highlight {
       color: #059669;
-      background: #ecfdf5;
+      background: rgba(16, 185, 129, 0.1);
       padding: 0.2rem 0.5rem;
       border-radius: 6px;
     }
@@ -438,16 +474,16 @@
     }
 
     th {
-      background: #f8fafc;
+      background: var(--bg);
       font-weight: 700;
-      color: #334155;
+      color: var(--text);
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
     tr:hover td {
-      background: #f8fafc;
+      background: var(--bg);
     }
 
     /* Editorial Content & Guide Card */
@@ -463,7 +499,7 @@
     .content-section h2 {
       font-size: 1.35rem;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--text);
       margin: 1.75rem 0 0.75rem 0;
     }
 
@@ -472,7 +508,7 @@
     }
 
     .content-section p {
-      color: #475569;
+      color: var(--muted);
       margin-bottom: 1rem;
       font-size: 0.95rem;
       line-height: 1.7;
@@ -481,7 +517,7 @@
     .content-section ul {
       margin-left: 1.3rem;
       margin-bottom: 1.25rem;
-      color: #475569;
+      color: var(--muted);
     }
 
     .content-section li {
@@ -500,13 +536,8 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.1rem;
-      background: #f8fafc;
+      background: var(--bg);
       cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .faq-box:hover {
-      background: #f1f5f9;
     }
 
     .faq-header {
@@ -515,14 +546,14 @@
       align-items: center;
       font-weight: 700;
       font-size: 0.95rem;
-      color: #0f172a;
+      color: var(--text);
     }
 
     .faq-body {
       display: none;
       margin-top: 0.6rem;
       font-size: 0.9rem;
-      color: #475569;
+      color: var(--muted);
       line-height: 1.6;
     }
 
@@ -531,12 +562,64 @@
     }
 
     .faq-box.active {
-      background: #ffffff;
-      border-color: #cbd5e1;
+      border-color: var(--primary);
+    }
+
+    /* Cartoon Mascot Widget (Savey) */
+    .mascot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .mascot-bubble {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      font-size: 0.85rem;
+      font-weight: 600;
+      max-width: 240px;
+      color: var(--text);
+      pointer-events: auto;
+      position: relative;
+      animation: floatBubble 3s ease-in-out infinite;
+    }
+
+    .mascot-avatar {
+      width: 54px;
+      height: 54px;
+      background: var(--emerald-gradient);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+      pointer-events: auto;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      animation: bounceMascot 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceMascot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes floatBubble {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
 
     footer {
-      background: #ffffff;
+      background: var(--surface);
       border-top: 1px solid var(--border);
       padding: 1.75rem 1rem;
       text-align: center;
@@ -556,20 +639,24 @@
         </svg>
         Loan<span>Saver</span>
       </a>
-      <span class="badge-pill">⚡ Advanced Mortgage Engine</span>
+      <div class="nav-right">
+        <span class="badge-pill">⚡ Pro Mortgage Suite</span>
+        <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+      </div>
     </div>
   </header>
 
   <div class="app-container">
     
     <div class="hero-header">
-      <h1>Home Loan Prepayment & Savings Calculator</h1>
-      <p>Simulate how monthly or annual lump-sum extra contributions minimize your interest liability and accelerate freedom.</p>
+      <h1>Home Loan Prepayment & Financial Planning Suite</h1>
+      <p>Simulate extra monthly EMIs, annual lump-sums, or compare mortgage prepayments against mutual fund investment yields.</p>
     </div>
 
     <div class="calc-tabs">
       <button class="tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI</button>
-      <button class="tab-btn" onclick="switchTab('annual')">Annual / Lump-Sum Prepayment</button>
+      <button class="tab-btn" onclick="switchTab('annual')">Annual Lump-Sum</button>
+      <button class="tab-btn" onclick="switchTab('sip')">Prepay vs. Mutual Fund SIP</button>
     </div>
 
     <div class="ad-wrapper" id="top-ad-slot">
@@ -586,13 +673,9 @@
 
     <div id="tab-monthly" class="tab-content active">
       <div class="calculator-layout">
-        
         <div class="app-card">
           <div class="card-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
             Loan Parameters
           </div>
 
@@ -620,7 +703,7 @@
 
           <div class="field-group">
             <div class="field-header">
-              <span class="field-label">Original Loan Tenure (Years)</span>
+              <span class="field-label">Original Tenure (Years)</span>
               <span class="field-value-pill" id="disp-tenure">20 Years</span>
             </div>
             <input type="range" id="range-tenure" min="5" max="30" step="1" value="20" />
@@ -643,11 +726,7 @@
 
         <div class="app-card">
           <div class="card-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             Savings Summary
           </div>
 
@@ -667,33 +746,14 @@
           </div>
 
           <div class="summary-list">
-            <div class="summary-item">
-              <span class="label">Original Monthly EMI</span>
-              <span class="val" id="res-regular-emi">₹0</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">New Monthly Outflow</span>
-              <span class="val" id="res-total-monthly">₹0</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">New Loan Duration</span>
-              <span class="val highlight" id="res-new-tenure">0 Yrs 0 Mos</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">Total Time Saved</span>
-              <span class="val highlight" id="res-time-saved">0 Yrs 0 Mos</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">Original Total Interest</span>
-              <span class="val" id="res-original-interest">₹0</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">New Total Interest</span>
-              <span class="val" id="res-new-interest">₹0</span>
-            </div>
+            <div class="summary-item"><span class="label">Original Monthly EMI</span><span class="val" id="res-regular-emi">₹0</span></div>
+            <div class="summary-item"><span class="label">New Monthly Outflow</span><span class="val" id="res-total-monthly">₹0</span></div>
+            <div class="summary-item"><span class="label">New Loan Duration</span><span class="val highlight" id="res-new-tenure">0 Yrs 0 Mos</span></div>
+            <div class="summary-item"><span class="label">Total Time Saved</span><span class="val highlight" id="res-time-saved">0 Yrs 0 Mos</span></div>
+            <div class="summary-item"><span class="label">Original Total Interest</span><span class="val" id="res-original-interest">₹0</span></div>
+            <div class="summary-item"><span class="label">New Total Interest</span><span class="val" id="res-new-interest">₹0</span></div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -701,107 +761,109 @@
       <div class="calculator-layout">
         <div class="app-card">
           <div class="card-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
-            Annual Prepayment Parameters
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            Annual Lump-Sum Parameters
           </div>
 
           <div class="field-group">
-            <div class="field-header">
-              <span class="field-label">Loan Principal</span>
-              <span class="field-value-pill" id="disp-lump-amount">₹50,00,000</span>
-            </div>
+            <div class="field-header"><span class="field-label">Loan Principal</span><span class="field-value-pill" id="disp-lump-amount">₹50,00,000</span></div>
             <input type="range" id="range-lump-amount" min="500000" max="20000000" step="50000" value="5000000" />
-            <div class="input-box-wrapper">
-              <input type="number" class="input-box" id="num-lump-amount" value="5000000" />
-            </div>
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-lump-amount" value="5000000" /></div>
           </div>
 
           <div class="field-group">
-            <div class="field-header">
-              <span class="field-label">Annual Interest Rate (%)</span>
-              <span class="field-value-pill" id="disp-lump-rate">8.5%</span>
-            </div>
+            <div class="field-header"><span class="field-label">Annual Interest Rate (%)</span><span class="field-value-pill" id="disp-lump-rate">8.5%</span></div>
             <input type="range" id="range-lump-rate" min="6.5" max="16.0" step="0.1" value="8.5" />
-            <div class="input-box-wrapper">
-              <input type="number" class="input-box" id="num-lump-rate" step="0.1" value="8.5" />
-            </div>
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-lump-rate" step="0.1" value="8.5" /></div>
           </div>
 
           <div class="field-group">
-            <div class="field-header">
-              <span class="field-label">Original Tenure (Years)</span>
-              <span class="field-value-pill" id="disp-lump-tenure">20 Years</span>
-            </div>
+            <div class="field-header"><span class="field-label">Original Tenure (Years)</span><span class="field-value-pill" id="disp-lump-tenure">20 Years</span></div>
             <input type="range" id="range-lump-tenure" min="5" max="30" step="1" value="20" />
-            <div class="input-box-wrapper">
-              <input type="number" class="input-box" id="num-lump-tenure" value="20" />
-            </div>
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-lump-tenure" value="20" /></div>
           </div>
 
           <div class="field-group">
-            <div class="field-header">
-              <span class="field-label">Extra Annual Lump-Sum (Once a Year)</span>
-              <span class="field-value-pill" id="disp-lump-extra">₹1,00,000</span>
-            </div>
+            <div class="field-header"><span class="field-label">Extra Annual Lump-Sum</span><span class="field-value-pill" id="disp-lump-extra">₹1,00,000</span></div>
             <input type="range" id="range-lump-extra" min="0" max="1000000" step="25000" value="100000" />
-            <div class="input-box-wrapper">
-              <input type="number" class="input-box" id="num-lump-extra" value="100000" />
-            </div>
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-lump-extra" value="100000" /></div>
           </div>
         </div>
 
         <div class="app-card">
           <div class="card-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-              <polyline points="17 6 23 6 23 12"></polyline>
-            </svg>
-            Lump-Sum Savings Summary
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            Lump-Sum Summary
           </div>
 
           <div class="savings-card">
-            <div class="eyebrow">Annual Interest Saved</div>
+            <div class="eyebrow">Annual Prepayment Interest Saved</div>
             <div class="amount" id="res-lump-saved">₹0</div>
           </div>
 
           <div class="summary-list">
-            <div class="summary-item">
-              <span class="label">Standard EMI</span>
-              <span class="val" id="res-lump-reg-emi">₹0</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">New Loan Duration</span>
-              <span class="val highlight" id="res-lump-new-tenure">0 Yrs 0 Mos</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">Time Saved</span>
-              <span class="val highlight" id="res-lump-time-saved">0 Yrs 0 Mos</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">Original Interest Total</span>
-              <span class="val" id="res-lump-orig-int">₹0</span>
-            </div>
-            <div class="summary-item">
-              <span class="label">New Interest Total</span>
-              <span class="val" id="res-lump-new-int">₹0</span>
-            </div>
+            <div class="summary-item"><span class="label">Standard EMI</span><span class="val" id="res-lump-reg-emi">₹0</span></div>
+            <div class="summary-item"><span class="label">New Loan Duration</span><span class="val highlight" id="res-lump-new-tenure">0 Yrs 0 Mos</span></div>
+            <div class="summary-item"><span class="label">Time Saved</span><span class="val highlight" id="res-lump-time-saved">0 Yrs 0 Mos</span></div>
+            <div class="summary-item"><span class="label">Original Interest Total</span><span class="val" id="res-lump-orig-int">₹0</span></div>
+            <div class="summary-item"><span class="label">New Interest Total</span><span class="val" id="res-lump-new-int">₹0</span></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-sip" class="tab-content">
+      <div class="calculator-layout">
+        <div class="app-card">
+          <div class="card-header">
+            📊 Comparison Parameters
+          </div>
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Monthly Extra Amount Available</span><span class="field-value-pill" id="disp-sip-amt">₹10,000</span></div>
+            <input type="range" id="range-sip-amt" min="2000" max="50000" step="1000" value="10000" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-sip-amt" value="10000" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Home Loan Interest Rate (%)</span><span class="field-value-pill" id="disp-sip-loan-rate">8.5%</span></div>
+            <input type="range" id="range-sip-loan-rate" min="6.5" max="14.0" step="0.1" value="8.5" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-sip-loan-rate" step="0.1" value="8.5" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Expected Mutual Fund SIP Return (CAGR %)</span><span class="field-value-pill" id="disp-sip-return">13.0%</span></div>
+            <input type="range" id="range-sip-return" min="8.0" max="20.0" step="0.5" value="13.0" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-sip-return" step="0.5" value="13.0" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Investment Horizon (Years)</span><span class="field-value-pill" id="disp-sip-years">15 Years</span></div>
+            <input type="range" id="range-sip-years" min="5" max="25" step="1" value="15" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-sip-years" value="15" /></div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="card-header">
+            💡 Wealth Comparison Verdict
+          </div>
+          <div class="savings-card" id="sip-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+            <div class="eyebrow">Better Financial Choice</div>
+            <div class="amount" id="res-sip-winner" style="font-size: 1.6rem;">Mutual Fund SIP Yields Higher Wealth</div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-item"><span class="label">Total Prepayment Interest Saved</span><span class="val" id="res-sip-loan-saved">₹0</span></div>
+            <div class="summary-item"><span class="label">Estimated SIP Future Value</span><span class="val highlight" id="res-sip-future-val">₹0</span></div>
+            <div class="summary-item"><span class="label">Difference in Returns</span><span class="val" id="res-sip-diff">₹0</span></div>
+          </div>
+          <p style="font-size: 0.850rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan prepayment gives guaranteed tax-free savings, whereas mutual fund returns are market-linked and subject to capital gains tax.</p>
         </div>
       </div>
     </div>
 
     <div class="schedule-card">
       <div class="card-header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-          <polyline points="10 9 9 9 8 9"></polyline>
-        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
         Yearly Amortization Schedule Breakdown
       </div>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem;">Review how your principal reduces year over year with your selected prepayment strategy.</p>
@@ -839,54 +901,31 @@
       <h2>Comprehensive Guide to Indian Home Loan Prepayments</h2>
       <p>Buying a home in metropolitan hubs like Pune, Mumbai, Bengaluru, or Delhi typically involves securing a long-term mortgage spanning 20 to 30 years. While Equated Monthly Installments (EMIs) make property acquisition manageable, standard bank amortization front-loads interest payments. During the first half of your loan tenure, up to 70% of your monthly remittance goes straight toward interest charges rather than settling the principal debt.</p>
       
-      <h2>Why Early Prepayment Makes a Monumental Difference</h2>
-      <p>By contributing even modest extra amounts toward your principal every month or year, you starve the compounding interest mechanism. Banks calculate daily or monthly reducing balances on home loans; therefore, lowering the principal denominator immediately reduces the subsequent interest quantum generated.</p>
-      
       <h2>Core Prepayment Strategies for Indian Borrowers</h2>
       <ul>
-        <li><strong>Commit to One Additional EMI Yearly:</strong> If your monthly installment is ₹45,000, paying one extra ₹45,000 sum each year slices 3 to 4 years off a standard 20-year term.</li>
-        <li><strong>The 10% Annual Step-Up:</strong> As corporate salary increments take effect, scaling up your extra contribution by 10% annually allows you to close mortgages in under 10 years.</li>
-        <li><strong>Zero Penalties on Floating Rates:</strong> Per Reserve Bank of India (RBI) regulations, banks and housing finance corporations (HFCs) cannot levy foreclosure or prepayment charges on individual floating-rate housing loans.</li>
+        <li><strong>Commit to One Additional EMI Yearly:</strong> Contributing one extra EMI each year slices 3 to 4 years off a standard 20-year term.</li>
+        <li><strong>The 10% Annual Step-Up:</strong> As corporate salary increments take effect, scaling up your extra contribution annually accelerates debt freedom.</li>
+        <li><strong>Zero Penalties on Floating Rates:</strong> Per Reserve Bank of India (RBI) regulations, banks and housing finance corporations cannot levy prepayment charges on individual floating-rate housing loans.</li>
       </ul>
 
-      <h2>Tax Implications Under Indian Income Tax Laws</h2>
-      <p>When planning prepayments, consider tax deductions:
-        <ul>
-          <li><strong>Principal Repayment:</strong> Eligible under Section 80C up to ₹1.5 Lakhs annually (applicable under the Old Tax Regime).</li>
-          <li><strong>Interest Component:</strong> Deductible under Section 24(b) up to ₹2 Lakhs per financial year for self-occupied residential property.</li>
-        </ul>
-      </p>
-
       <h2>Frequently Asked Questions</h2>
-      
       <div class="faq-list">
-        <div class="faq-box">
-          <div class="faq-header">
-            <span>Is it better to reduce the tenure or reduce the monthly EMI?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-body">Choosing to shorten the loan tenure generates significantly higher total interest savings. If you reduce the EMI instead, your loan duration remains the same, muting the compounding interest savings benefit.</div>
+        <div class="faq-box" onclick="toggleFaq(this)">
+          <div class="faq-header"><span>Is it better to reduce the tenure or reduce the monthly EMI?</span><span>+</span></div>
+          <div class="faq-body">Choosing to shorten the loan tenure generates significantly higher total interest savings. Reducing EMI leaves loan duration unchanged, muting compounding savings.</div>
         </div>
-
-        <div class="faq-box">
-          <div class="faq-header">
-            <span>Are there tax deduction benefits for prepaying a home loan?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-body">Yes, the principal component of your prepayment qualifies under Section 80C deductions within the overall annual ceiling of ₹1.5 Lakh under the Old Tax Regime.</div>
-        </div>
-
-        <div class="faq-box">
-          <div class="faq-header">
-            <span>Should I prepay my home loan or invest in mutual funds?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-body">If your home loan interest rate is 8.5% to 9%, prepaying locks in an effective risk-free return matching that exact rate. A balanced approach of investing alongside moderate prepayment helps maintain optimal liquidity.</div>
+        <div class="faq-box" onclick="toggleFaq(this)">
+          <div class="faq-header"><span>Are there tax deduction benefits for prepaying a home loan?</span><span>+</span></div>
+          <div class="faq-body">Yes, the principal component qualifies under Section 80C up to ₹1.5 Lakhs, and interest is deductible under Section 24(b) up to ₹2 Lakhs per financial year under the Old Tax Regime.</div>
         </div>
       </div>
-
     </div>
 
+  </div>
+
+  <div class="mascot-container">
+    <div class="mascot-bubble" id="mascot-speech">👋 Hi Pratik! Try tweaking the extra EMI slider to see how fast you become debt-free!</div>
+    <div class="mascot-avatar" onclick="rotateMascotTip()" title="Click for financial tip!">🤖</div>
   </div>
 
   <footer>
@@ -894,6 +933,32 @@
   </footer>
 
   <script>
+    /* Theme Toggle */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('theme-btn');
+      if (html.getAttribute('data-theme') === 'light') {
+        html.setAttribute('data-theme', 'dark');
+        btn.innerText = '☀️';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        btn.innerText = '🌙';
+      }
+    }
+
+    /* Mascot Tips */
+    const tips = [
+      "💡 Pro Tip: Paying just ₹5,000 extra a month can save you lakhs in interest!",
+      "🇮🇳 RBI rules state zero prepayment penalties on floating rate home loans!",
+      "📈 Compare your loan rate with Mutual Fund SIP returns using our comparison tab!",
+      "🏠 Shortening your loan tenure saves much more than reducing your monthly EMI."
+    ];
+    let tipIndex = 0;
+    function rotateMascotTip() {
+      tipIndex = (tipIndex + 1) % tips.length;
+      document.getElementById('mascot-speech').innerText = tips[tipIndex];
+    }
+
     function formatINR(val) {
       return '₹' + Math.round(val).toLocaleString('en-IN');
     }
@@ -906,31 +971,32 @@
         document.querySelector('.calc-tabs button:nth-child(1)').classList.add('active');
         document.getElementById('tab-monthly').classList.add('active');
         calculateMonthly();
-      } else {
+      } else if (tabName === 'annual') {
         document.querySelector('.calc-tabs button:nth-child(2)').classList.add('active');
         document.getElementById('tab-annual').classList.add('active');
         calculateAnnual();
+      } else {
+        document.querySelector('.calc-tabs button:nth-child(3)').classList.add('active');
+        document.getElementById('tab-sip').classList.add('active');
+        calculateSIP();
       }
     }
 
-    /* Tab 1 Sync & Calculation Logic */
-    const rangeAmount = document.getElementById('range-amount');
-    const numAmount = document.getElementById('num-amount');
-    const dispAmount = document.getElementById('disp-amount');
+    /* Tab 1 Calculations */
+    const rAmt = document.getElementById('range-amount');
+    const nAmt = document.getElementById('num-amount');
+    const dAmt = document.getElementById('disp-amount');
+    const rRat = document.getElementById('range-rate');
+    const nRat = document.getElementById('num-rate');
+    const dRat = document.getElementById('disp-rate');
+    const rTen = document.getElementById('range-tenure');
+    const nTen = document.getElementById('num-tenure');
+    const dTen = document.getElementById('disp-tenure');
+    const rPre = document.getElementById('range-prepay');
+    const nPre = document.getElementById('num-prepay');
+    const dPre = document.getElementById('disp-prepay');
 
-    const rangeRate = document.getElementById('range-rate');
-    const numRate = document.getElementById('num-rate');
-    const dispRate = document.getElementById('disp-rate');
-
-    const rangeTenure = document.getElementById('range-tenure');
-    const numTenure = document.getElementById('num-tenure');
-    const dispTenure = document.getElementById('disp-tenure');
-
-    const rangePrepay = document.getElementById('range-prepay');
-    const numPrepay = document.getElementById('num-prepay');
-    const dispPrepay = document.getElementById('disp-prepay');
-
-    function sync(range, num, disp, prefix = '', suffix = '') {
+    function syncFields(range, num, disp, prefix = '', suffix = '') {
       range.addEventListener('input', () => {
         num.value = range.value;
         disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix;
@@ -942,21 +1008,19 @@
         calculateMonthly();
       });
     }
-
-    sync(rangeAmount, numAmount, dispAmount, '₹', '');
-    sync(rangeRate, numRate, dispRate, '', '%');
-    sync(rangeTenure, numTenure, dispTenure, '', ' Years');
-    sync(rangePrepay, numPrepay, dispPrepay, '₹', '');
+    syncFields(rAmt, nAmt, dAmt, '₹', '');
+    syncFields(rRat, nRat, dRat, '', '%');
+    syncFields(rTen, nTen, dTen, '', ' Years');
+    syncFields(rPre, nPre, dPre, '₹', '');
 
     function calculateMonthly() {
-      const P = parseFloat(numAmount.value) || 0;
-      const annualR = parseFloat(numRate.value) || 0;
-      const tenureYears = parseFloat(numTenure.value) || 0;
-      const extraMonthly = parseFloat(numPrepay.value) || 0;
+      const P = parseFloat(nAmt.value) || 0;
+      const annualR = parseFloat(nRat.value) || 0;
+      const tenureYears = parseFloat(nTen.value) || 0;
+      const extraMonthly = parseFloat(nPre.value) || 0;
 
       const r = (annualR / 12) / 100;
       const n = tenureYears * 12;
-
       if (P <= 0 || r <= 0 || n <= 0) return;
 
       const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
@@ -969,10 +1033,7 @@
       const totalMonthlyPayment = emi + extraMonthly;
 
       let scheduleHTML = '';
-      let yearlyInterest = 0;
-      let yearlyPrincipal = 0;
-      let yearOpening = P;
-      let yearPaidEMI = 0;
+      let yearlyInterest = 0, yearlyPrincipal = 0, yearOpening = P, yearPaidEMI = 0;
 
       while (balance > 0 && monthsCount < n + 120) {
         const monthlyInterest = balance * r;
@@ -993,33 +1054,19 @@
 
         if (monthsCount % 12 === 0 || balance === 0) {
           const currentYear = Math.ceil(monthsCount / 12);
-          scheduleHTML += `
-            <tr>
-              <td>Year ${currentYear}</td>
-              <td>${formatINR(yearOpening)}</td>
-              <td>${formatINR(yearPaidEMI)}</td>
-              <td>${formatINR(yearlyInterest)}</td>
-              <td>${formatINR(yearlyPrincipal)}</td>
-              <td>${formatINR(balance)}</td>
-            </tr>
-          `;
+          scheduleHTML += `<tr><td>Year ${currentYear}</td><td>${formatINR(yearOpening)}</td><td>${formatINR(yearPaidEMI)}</td><td>${formatINR(yearlyInterest)}</td><td>${formatINR(yearlyPrincipal)}</td><td>${formatINR(balance)}</td></tr>`;
           yearOpening = balance;
-          yearlyInterest = 0;
-          yearlyPrincipal = 0;
-          yearPaidEMI = 0;
+          yearlyInterest = 0; yearlyPrincipal = 0; yearPaidEMI = 0;
         }
       }
-
       document.getElementById('schedule-body').innerHTML = scheduleHTML;
 
       const interestSaved = Math.max(0, originalTotalInterest - newTotalInterest);
       const totalMonthsSaved = Math.max(0, n - monthsCount);
       const savedYears = Math.floor(totalMonthsSaved / 12);
       const savedMonths = totalMonthsSaved % 12;
-
       const newYears = Math.floor(monthsCount / 12);
       const newMonths = monthsCount % 12;
-
       const percentSavedTime = Math.min(100, Math.round((totalMonthsSaved / n) * 100));
 
       document.getElementById('res-interest-saved').innerText = formatINR(interestSaved);
@@ -1029,27 +1076,23 @@
       document.getElementById('res-new-interest').innerText = formatINR(newTotalInterest);
       document.getElementById('res-new-tenure').innerText = `${newYears} Yrs ${newMonths} Mos`;
       document.getElementById('res-time-saved').innerText = `${savedYears} Yrs ${savedMonths} Mos`;
-      
       document.getElementById('bar-percentage-text').innerText = `${percentSavedTime}% Tenure Saved`;
       document.getElementById('progress-bar').style.width = `${Math.max(10, percentSavedTime)}%`;
     }
 
-    /* Tab 2 Annual Sync & Calculation Logic */
-    const rangeLumpAmount = document.getElementById('range-lump-amount');
-    const numLumpAmount = document.getElementById('num-lump-amount');
-    const dispLumpAmount = document.getElementById('disp-lump-amount');
-
-    const rangeLumpRate = document.getElementById('range-lump-rate');
-    const numLumpRate = document.getElementById('num-lump-rate');
-    const dispLumpRate = document.getElementById('disp-lump-rate');
-
-    const rangeLumpTenure = document.getElementById('range-lump-tenure');
-    const numLumpTenure = document.getElementById('num-lump-tenure');
-    const dispLumpTenure = document.getElementById('disp-lump-tenure');
-
-    const rangeLumpExtra = document.getElementById('range-lump-extra');
-    const numLumpExtra = document.getElementById('num-lump-extra');
-    const dispLumpExtra = document.getElementById('disp-lump-extra');
+    /* Tab 2 Annual Calculations */
+    const rLAmt = document.getElementById('range-lump-amount');
+    const nLAmt = document.getElementById('num-lump-amount');
+    const dLAmt = document.getElementById('disp-lump-amount');
+    const rLRat = document.getElementById('range-lump-rate');
+    const nLRat = document.getElementById('num-lump-rate');
+    const dLRat = document.getElementById('disp-lump-rate');
+    const rLTen = document.getElementById('range-lump-tenure');
+    const nLTen = document.getElementById('num-lump-tenure');
+    const dLTen = document.getElementById('disp-lump-tenure');
+    const rLExt = document.getElementById('range-lump-extra');
+    const nLExt = document.getElementById('num-lump-extra');
+    const dLExt = document.getElementById('disp-lump-extra');
 
     function syncLump(range, num, disp, prefix = '', suffix = '') {
       range.addEventListener('input', () => {
@@ -1063,77 +1106,100 @@
         calculateAnnual();
       });
     }
-
-    syncLump(rangeLumpAmount, numLumpAmount, dispLumpAmount, '₹', '');
-    syncLump(rangeLumpRate, numLumpRate, dispLumpRate, '', '%');
-    syncLump(rangeLumpTenure, numLumpTenure, dispLumpTenure, '', ' Years');
-    syncLump(rangeLumpExtra, numLumpExtra, dispLumpExtra, '₹', '');
+    syncLump(rLAmt, nLAmt, dLAmt, '₹', '');
+    syncLump(rLRat, nLRat, dLRat, '', '%');
+    syncLump(rLTen, nLTen, dLTen, '', ' Years');
+    syncLump(rLExt, nLExt, dLExt, '₹', '');
 
     function calculateAnnual() {
-      const P = parseFloat(numLumpAmount.value) || 0;
-      const annualR = parseFloat(numLumpRate.value) || 0;
-      const tenureYears = parseFloat(numLumpTenure.value) || 0;
-      const annualExtra = parseFloat(numLumpExtra.value) || 0;
-
+      const P = parseFloat(nLAmt.value) || 0;
+      const annualR = parseFloat(nLRat.value) || 0;
+      const tenureYears = parseFloat(nLTen.value) || 0;
+      const annualExtra = parseFloat(nLExt.value) || 0;
       const r = (annualR / 12) / 100;
       const n = tenureYears * 12;
-
       if (P <= 0 || r <= 0 || n <= 0) return;
 
       const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      const originalTotalPayable = emi * n;
-      const originalTotalInterest = originalTotalPayable - P;
+      const originalTotalInterest = (emi * n) - P;
 
-      let balance = P;
-      let newTotalInterest = 0;
-      let monthsCount = 0;
-
+      let balance = P, newTotalInterest = 0, monthsCount = 0;
       while (balance > 0 && monthsCount < n + 120) {
         const monthlyInterest = balance * r;
         newTotalInterest += monthlyInterest;
         let principalPaid = emi - monthlyInterest;
+        if ((monthsCount + 1) % 12 === 0) principalPaid += annualExtra;
 
-        // Apply annual lump sum at every 12th month
-        if ((monthsCount + 1) % 12 === 0) {
-          principalPaid += annualExtra;
-        }
-
-        if (balance - principalPaid <= 0) {
-          principalPaid = balance;
-          balance = 0;
-        } else {
-          balance -= principalPaid;
-        }
+        if (balance - principalPaid <= 0) { balance = 0; } else { balance -= principalPaid; }
         monthsCount++;
       }
-
       const interestSaved = Math.max(0, originalTotalInterest - newTotalInterest);
       const totalMonthsSaved = Math.max(0, n - monthsCount);
-      const savedYears = Math.floor(totalMonthsSaved / 12);
-      const savedMonths = totalMonthsSaved % 12;
-
-      const newYears = Math.floor(monthsCount / 12);
-      const newMonths = monthsCount % 12;
-
       document.getElementById('res-lump-saved').innerText = formatINR(interestSaved);
       document.getElementById('res-lump-reg-emi').innerText = formatINR(emi);
-      document.getElementById('res-lump-new-tenure').innerText = `${newYears} Yrs ${newMonths} Mos`;
-      document.getElementById('res-lump-time-saved').innerText = `${savedYears} Yrs ${savedMonths} Mos`;
+      document.getElementById('res-lump-new-tenure').innerText = `${Math.floor(monthsCount/12)} Yrs ${monthsCount%12} Mos`;
+      document.getElementById('res-lump-time-saved').innerText = `${Math.floor(totalMonthsSaved/12)} Yrs ${totalMonthsSaved%12} Mos`;
       document.getElementById('res-lump-orig-int').innerText = formatINR(originalTotalInterest);
       document.getElementById('res-lump-new-int').innerText = formatINR(newTotalInterest);
     }
 
-    /* FAQ Toggles */
-    document.querySelectorAll('.faq-box').forEach(box => {
-      box.addEventListener('click', () => {
-        box.classList.toggle('active');
-        const icon = box.querySelector('.faq-header span:last-child');
-        icon.innerText = box.classList.contains('active') ? '−' : '+';
-      });
-    });
+    /* Tab 3 SIP vs Prepayment Calculations */
+    const rSipAmt = document.getElementById('range-sip-amt'), nSipAmt = document.getElementById('num-sip-amt'), dSipAmt = document.getElementById('disp-sip-amt');
+    const rSipLoan = document.getElementById('range-sip-loan-rate'), nSipLoan = document.getElementById('num-sip-loan-rate'), dSipLoan = document.getElementById('disp-sip-loan-rate');
+    const rSipRet = document.getElementById('range-sip-return'), nSipRet = document.getElementById('num-sip-return'), dSipRet = document.getElementById('disp-sip-return');
+    const rSipYrs = document.getElementById('range-sip-years'), nSipYrs = document.getElementById('num-sip-years'), dSipYrs = document.getElementById('disp-sip-years');
+
+    function syncSip(range, num, disp, prefix = '', suffix = '') {
+      range.addEventListener('input', () => { num.value = range.value; disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix; calculateSIP(); });
+      num.addEventListener('input', () => { range.value = num.value; disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix; calculateSIP(); });
+    }
+    syncSip(rSipAmt, nSipAmt, dSipAmt, '₹', '');
+    syncSip(rSipLoan, nSipLoan, dSipLoan, '', '%');
+    syncSip(rSipRet, nSipRet, dSipRet, '', '%');
+    syncSip(rSipYrs, nSipYrs, dSipYrs, '', ' Years');
+
+    function calculateSIP() {
+      const monthlyExtra = parseFloat(nSipAmt.value) || 0;
+      const loanRate = parseFloat(nSipLoan.value) || 0;
+      const sipReturn = parseFloat(nSipRet.value) || 0;
+      const years = parseFloat(nSipYrs.value) || 0;
+      const months = years * 12;
+
+      // Approximate interest saved by prepaying loan equal to monthlyExtra
+      const approximateLoanSaved = monthlyExtra * months * (loanRate / 12) * 0.7;
+
+      // SIP Future Value formula: FV = P * [((1 + i)^n - 1) / i] * (1 + i)
+      const i = (sipReturn / 12) / 100;
+      const sipFV = monthlyExtra * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
+      const totalInvested = monthlyExtra * months;
+      const sipEarnings = sipFV - totalInvested;
+
+      document.getElementById('res-sip-loan-saved').innerText = formatINR(approximateLoanSaved);
+      document.getElementById('res-sip-future-val').innerText = formatINR(sipFV);
+      
+      const diff = sipFV - (approximateLoanSaved + totalInvested);
+      document.getElementById('res-sip-diff').innerText = formatINR(Math.abs(diff));
+
+      const winnerBox = document.getElementById('sip-verdict-box');
+      const winnerText = document.getElementById('res-sip-winner');
+      if (sipReturn > loanRate + 2) {
+        winnerBox.style.background = 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)';
+        winnerText.innerText = '🏆 Mutual Fund SIP Yields Higher Wealth';
+      } else {
+        winnerBox.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        winnerText.innerText = '🏆 Home Loan Prepayment is Safer & Better';
+      }
+    }
+
+    function toggleFaq(box) {
+      box.classList.toggle('active');
+      const icon = box.querySelector('.faq-header span:last-child');
+      icon.innerText = box.classList.contains('active') ? '−' : '+';
+    }
 
     calculateMonthly();
     calculateAnnual();
+    calculateSIP();
   </script>
 </body>
 </html>
