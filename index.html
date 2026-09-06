@@ -73,10 +73,10 @@
       --surface: #ffffff;
       --bg: #f8fafc;
       --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-      --input-bg: #f8fafc;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+      --input-bg: #ffffff;
     }
 
     [data-theme="dark"] {
@@ -86,9 +86,9 @@
       --surface: #1e293b;
       --bg: #0f172a;
       --text: #f8fafc;
-      --muted: #94a3b8;
-      --border: #334155;
-      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+      --muted: #cbd5e1;
+      --border: #475569;
+      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
       --input-bg: #0f172a;
     }
 
@@ -97,7 +97,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
     body {
@@ -107,6 +106,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     header {
@@ -161,22 +161,25 @@
       gap: 0.35rem;
     }
 
-    /* Clear Understanding Theme Toggle Switcher */
-    .theme-switch-wrapper {
+    /* Highly Visible Theme Toggle Button */
+    .theme-toggle-btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      padding: 0.3rem 0.7rem;
-      border-radius: 9999px;
-      cursor: pointer;
+      gap: 0.4rem;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      transition: background 0.2s ease;
     }
 
-    .theme-switch-wrapper span {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--muted);
+    .theme-toggle-btn:hover {
+      background: var(--primary-dark);
     }
 
     .app-container {
@@ -188,7 +191,7 @@
     .hero-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 2rem;
     }
 
     .hero-header h1 {
@@ -206,32 +209,43 @@
       font-weight: 500;
     }
 
-    /* Prominent Top Navigation Tabs */
-    .calc-tabs {
+    /* Prominent Top Navigation Tabs Container */
+    .calc-tabs-wrapper {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      padding: 0.5rem;
+      border-radius: 16px;
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
+      gap: 0.5rem;
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      box-shadow: var(--card-shadow);
       flex-wrap: wrap;
     }
 
     .tab-btn {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
+      background: transparent;
+      border: none;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.92rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 12px;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       transition: all 0.2s ease;
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
     }
 
     .tab-btn.active {
       background: var(--primary);
       color: #ffffff;
-      border-color: var(--primary);
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
     }
 
@@ -247,7 +261,7 @@
       margin: 1.5rem auto;
       width: 100%;
       max-width: 728px;
-      min-height: 100px;
+      min-height: 90px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -679,10 +693,9 @@
       <div class="nav-right">
         <span class="badge-pill">⚡ Pro Mortgage Suite</span>
         
-        <div class="theme-switch-wrapper" onclick="toggleTheme()" title="Click to switch theme">
-          <span>Mode:</span>
-          <strong id="theme-label">Light ☀️</strong>
-        </div>
+        <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span> <span id="theme-text">Dark Mode</span>
+        </button>
       </div>
     </div>
   </header>
@@ -694,10 +707,10 @@
       <p>Simulate extra monthly EMIs, annual lump-sums, or compare mortgage prepayments against mutual fund investment yields.</p>
     </div>
 
-    <div class="calc-tabs">
-      <button class="tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI Calculator</button>
-      <button class="tab-btn" onclick="switchTab('annual')">Annual Lump-Sum Planner</button>
-      <button class="tab-btn" onclick="switchTab('sip')">Prepay vs. Mutual Fund SIP</button>
+    <div class="calc-tabs-wrapper">
+      <button class="tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI</button>
+      <button class="tab-btn" onclick="switchTab('annual')">Annual Lump-Sum</button>
+      <button class="tab-btn" onclick="switchTab('sip')">Prepay vs. SIP</button>
     </div>
 
     <div class="ad-wrapper" id="top-ad-slot">
@@ -987,13 +1000,17 @@
     /* Theme Toggle Functionality */
     function toggleTheme() {
       const html = document.documentElement;
-      const label = document.getElementById('theme-label');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeText = document.getElementById('theme-text');
+      
       if (html.getAttribute('data-theme') === 'light') {
         html.setAttribute('data-theme', 'dark');
-        label.innerText = 'Dark 🌙';
+        themeIcon.innerText = '☀️';
+        themeText.innerText = 'Light Mode';
       } else {
         html.setAttribute('data-theme', 'light');
-        label.innerText = 'Light ☀️';
+        themeIcon.innerText = '🌙';
+        themeText.innerText = 'Dark Mode';
       }
     }
 
@@ -1019,15 +1036,15 @@
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
       if (tabName === 'monthly') {
-        document.querySelector('.calc-tabs button:nth-child(1)').classList.add('active');
+        document.querySelector('.calc-tabs-wrapper button:nth-child(1)').classList.add('active');
         document.getElementById('tab-monthly').classList.add('active');
         calculateMonthly();
       } else if (tabName === 'annual') {
-        document.querySelector('.calc-tabs button:nth-child(2)').classList.add('active');
+        document.querySelector('.calc-tabs-wrapper button:nth-child(2)').classList.add('active');
         document.getElementById('tab-annual').classList.add('active');
         calculateAnnual();
       } else {
-        document.querySelector('.calc-tabs button:nth-child(3)').classList.add('active');
+        document.querySelector('.calc-tabs-wrapper button:nth-child(3)').classList.add('active');
         document.getElementById('tab-sip').classList.add('active');
         calculateSIP();
       }
