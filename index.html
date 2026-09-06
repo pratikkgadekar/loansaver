@@ -646,7 +646,7 @@
         </a>
 
         <div class="header-tabs">
-          <button class="header-tab-btn active" onclick="switchTab('monthly')">Monthly EMI</button>
+          <button class="header-tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI</button>
           <button class="header-tab-btn" onclick="switchTab('annual')">Annual Lump-Sum</button>
           <button class="header-tab-btn" onclick="switchTab('sip')">Prepay vs. SIP</button>
           <button class="header-tab-btn" onclick="switchTab('rentbuy')">Rent vs. Buy</button>
@@ -856,7 +856,7 @@
           <div class="card-header">💡 Wealth Comparison Verdict</div>
           <div class="savings-card" id="sip-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
             <div class="eyebrow">Better Financial Choice</div>
-            <div class="amount" id="res-sip-winner" style="font-size: 1.5rem;">Mutual Fund SIP Yields Higher Wealth</div>
+            <div class="amount" id="res-sip-winner" style="font-size: 1.6rem;">Mutual Fund SIP Yields Higher Wealth</div>
           </div>
           <div class="summary-list">
             <div class="summary-item"><span class="label">Total Prepayment Interest Saved</span><span class="val" id="res-sip-loan-saved">₹0</span></div>
@@ -901,12 +901,12 @@
           <div class="card-header">⚖️ Rent vs. Buy Analysis (10 Years)</div>
           <div class="savings-card" id="rb-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
             <div class="eyebrow">Financial Recommendation</div>
-            <div class="amount" id="res-rb-winner" style="font-size: 1.5rem;">Renting & Investing Excess May Yield More</div>
+            <div class="amount" id="res-rb-winner" style="font-size: 1.5rem;">Renting & Investing Surplus May Yield More</div>
           </div>
           <div class="summary-list">
             <div class="summary-item"><span class="label">Future Property Value</span><span class="val" id="res-rb-prop-val">₹0</span></div>
             <div class="summary-item"><span class="label">Total Home Ownership Cost</span><span class="val" id="res-rb-buy-cost">₹0</span></div>
-            <div class="summary-item"><span class="label">Renting + Investment corpus</span><span class="val highlight" id="res-rb-rent-corpus">₹0</span></div>
+            <div class="summary-item"><span class="label">Renting + Investment Corpus</span><span class="val highlight" id="res-rb-rent-corpus">₹0</span></div>
           </div>
           <p style="font-size: 0.88rem; color: var(--muted); margin-top: 1rem;">*Based on a 20-year home loan at 8.5% with a 20% down payment.</p>
         </div>
@@ -1084,7 +1084,6 @@
       else if (tabName === 'tax') calculateTax();
     }
 
-    /* Tab 1 Calculations */
     const rAmt = document.getElementById('range-amount'), nAmt = document.getElementById('num-amount'), dAmt = document.getElementById('disp-amount');
     const rRat = document.getElementById('range-rate'), nRat = document.getElementById('num-rate'), dRat = document.getElementById('disp-rate');
     const rTen = document.getElementById('range-tenure'), nTen = document.getElementById('num-tenure'), dTen = document.getElementById('disp-tenure');
@@ -1160,7 +1159,6 @@
       document.getElementById('progress-bar').style.width = `${Math.max(10, percentSavedTime)}%`;
     }
 
-    /* Tab 2 Annual Calculations */
     const rLAmt = document.getElementById('range-lump-amount'), nLAmt = document.getElementById('num-lump-amount'), dLAmt = document.getElementById('disp-lump-amount');
     const rLRat = document.getElementById('range-lump-rate'), nLRat = document.getElementById('num-lump-rate'), dLRat = document.getElementById('disp-lump-rate');
     const rLTen = document.getElementById('range-lump-tenure'), nLTen = document.getElementById('num-lump-tenure'), dLTen = document.getElementById('disp-lump-tenure');
@@ -1203,7 +1201,6 @@
       document.getElementById('res-lump-new-int').innerText = formatINR(newTotalInterest);
     }
 
-    /* Tab 3 SIP vs Prepayment Calculations */
     const rSipAmt = document.getElementById('range-sip-amt'), nSipAmt = document.getElementById('num-sip-amt'), dSipAmt = document.getElementById('disp-sip-amt');
     const rSipLoan = document.getElementById('range-sip-loan-rate'), nSipLoan = document.getElementById('num-sip-loan-rate'), dSipLoan = document.getElementById('disp-sip-loan-rate');
     const rSipRet = document.getElementById('range-sip-return'), nSipRet = document.getElementById('num-sip-return'), dSipRet = document.getElementById('disp-sip-return');
@@ -1243,7 +1240,6 @@
       }
     }
 
-    /* Tab 4 Rent vs Buy Calculations */
     const rRbPrice = document.getElementById('range-rb-price'), nRbPrice = document.getElementById('num-rb-price'), dRbPrice = document.getElementById('disp-rb-price');
     const rRbRent = document.getElementById('range-rb-rent'), nRbRent = document.getElementById('num-rb-rent'), dRbRent = document.getElementById('disp-rb-rent');
     const rRbAppr = document.getElementById('range-rb-appr'), nRbAppr = document.getElementById('num-rb-appr'), dRbAppr = document.getElementById('disp-rb-appr');
@@ -1262,13 +1258,13 @@
 
       const years = 10;
       const futurePropVal = price * Math.pow(1 + appr, years);
-      const totalBuyCost = price * 1.08; // Down payment + stamp duty + maintenance
+      const totalBuyCost = price * 1.08;
 
       let totalRentPaid = 0;
       let currentRent = rent;
       for(let i = 0; i < years * 12; i++) {
         totalRentPaid += currentRent;
-        if(i > 0 && i % 12 === 0) currentRent *= 1.05; // 5% rent hike annually
+        if(i > 0 && i % 12 === 0) currentRent *= 1.05;
       }
 
       document.getElementById('res-rb-prop-val').innerText = formatINR(futurePropVal);
@@ -1286,7 +1282,6 @@
       }
     }
 
-    /* Tab 5 Tax Savings Calculations */
     const rTaxInt = document.getElementById('range-tax-int'), nTaxInt = document.getElementById('num-tax-int'), dTaxInt = document.getElementById('disp-tax-int');
     const rTaxPrin = document.getElementById('range-tax-prin'), nTaxPrin = document.getElementById('num-tax-prin'), dTaxPrin = document.getElementById('disp-tax-prin');
     const rTaxSlab = document.getElementById('range-tax-slab'), nTaxSlab = document.getElementById('num-tax-slab'), dTaxSlab = document.getElementById('disp-tax-slab');
