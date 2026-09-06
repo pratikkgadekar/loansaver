@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>LoanSaver.in | Home Loan Prepayment, SIP Comparison & Amortization Calculator</title>
+  <title>LoanSaver.in | Home Loan Prepayment & Amortization Calculator</title>
   <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator" />
-  <meta name="description" content="Free Indian mortgage calculator. Compare home loan prepayment savings vs. mutual fund SIP returns, view amortization schedules, and reduce your loan tenure." />
-  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan vs mutual fund SIP, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure, amortization schedule India" />
+  <meta name="description" content="Calculate how much interest and tenure you save by paying extra monthly or lump-sum prepayments on your home loan. Free Indian mortgage calculator with amortization schedule." />
+  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan interest savings, SBI home loan prepay, HDFC loan prepayment calculator, reduce loan tenure, amortization schedule India" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.loansaver.in/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.loansaver.in/" />
-  <meta property="og:title" content="LoanSaver.in | Smart Home Loan & Financial Comparison Hub" />
-  <meta property="og:description" content="Calculate interest savings, compare loan prepayments with mutual fund SIP yields, and plan your debt-free journey." />
+  <meta property="og:title" content="LoanSaver.in | Calculate Your Home Loan Prepayment Savings" />
+  <meta property="og:description" content="See how adding extra payments can save you Lakhs in interest and shorten your loan by years." />
   <meta property="og:site_name" content="LoanSaver" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2884422236657572" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "LoanSaver Financial & Mortgage Suite",
+        "name": "LoanSaver Home Loan Prepayment Calculator",
         "url": "https://www.loansaver.in/",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
@@ -34,7 +34,7 @@
           "price": "0",
           "priceCurrency": "INR"
         },
-        "description": "Interactive financial calculators to determine home loan prepayments and investment comparisons."
+        "description": "Free interactive financial calculator to determine interest and tenure reduction from home loan prepayments."
       },
       {
         "@type": "FAQPage",
@@ -49,10 +49,10 @@
           },
           {
             "@type": "Question",
-            "name": "Should I prepay my home loan or invest in mutual funds?",
+            "name": "Are there prepayment penalties on home loans in India?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If your loan interest rate is 8.5% to 9%, prepaying locks in an effective risk-free return matching that rate. Compare your expected mutual fund CAGR against your loan rate to decide."
+              "text": "Under RBI guidelines, Indian banks and housing finance corporations cannot charge prepayment penalties on individual floating-rate home loans."
             }
           }
         ]
@@ -163,18 +163,24 @@
       gap: 0.35rem;
     }
 
+    /* Theme Toggle Button Styling */
     .theme-toggle-btn {
       background: var(--bg);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       color: var(--text);
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--primary);
     }
 
     .app-container {
@@ -565,7 +571,7 @@
       border-color: var(--primary);
     }
 
-    /* Cartoon Mascot Widget (Savey) */
+    /* Interactive Cartoon Mascot Widget (Savey) */
     .mascot-container {
       position: fixed;
       bottom: 20px;
@@ -641,7 +647,7 @@
       </a>
       <div class="nav-right">
         <span class="badge-pill">⚡ Pro Mortgage Suite</span>
-        <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+        <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">🌙</button>
       </div>
     </div>
   </header>
@@ -856,7 +862,7 @@
             <div class="summary-item"><span class="label">Estimated SIP Future Value</span><span class="val highlight" id="res-sip-future-val">₹0</span></div>
             <div class="summary-item"><span class="label">Difference in Returns</span><span class="val" id="res-sip-diff">₹0</span></div>
           </div>
-          <p style="font-size: 0.850rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan prepayment gives guaranteed tax-free savings, whereas mutual fund returns are market-linked and subject to capital gains tax.</p>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan prepayment gives guaranteed tax-free savings, whereas mutual fund returns are market-linked.</p>
         </div>
       </div>
     </div>
@@ -933,7 +939,7 @@
   </footer>
 
   <script>
-    /* Theme Toggle */
+    /* Theme Toggle Functionality */
     function toggleTheme() {
       const html = document.documentElement;
       const btn = document.getElementById('theme-btn');
@@ -946,7 +952,7 @@
       }
     }
 
-    /* Mascot Tips */
+    /* Mascot Tips Rotation */
     const tips = [
       "💡 Pro Tip: Paying just ₹5,000 extra a month can save you lakhs in interest!",
       "🇮🇳 RBI rules state zero prepayment penalties on floating rate home loans!",
@@ -1165,14 +1171,10 @@
       const years = parseFloat(nSipYrs.value) || 0;
       const months = years * 12;
 
-      // Approximate interest saved by prepaying loan equal to monthlyExtra
       const approximateLoanSaved = monthlyExtra * months * (loanRate / 12) * 0.7;
-
-      // SIP Future Value formula: FV = P * [((1 + i)^n - 1) / i] * (1 + i)
       const i = (sipReturn / 12) / 100;
       const sipFV = monthlyExtra * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
       const totalInvested = monthlyExtra * months;
-      const sipEarnings = sipFV - totalInvested;
 
       document.getElementById('res-sip-loan-saved').innerText = formatINR(approximateLoanSaved);
       document.getElementById('res-sip-future-val').innerText = formatINR(sipFV);
