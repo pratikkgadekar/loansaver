@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>LoanSaver.in | Home Loan Prepayment, SIP Comparison & Amortization Calculator</title>
-  <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Extra EMI Savings Calculator" />
-  <meta name="description" content="Free Indian mortgage calculator. Compare home loan prepayment savings vs. mutual fund SIP returns, view amortization schedules, and check latest RBI prepayment rules." />
-  <meta name="keywords" content="home loan prepayment calculator, loan tenure reducer, extra EMI calculator, home loan vs mutual fund SIP, rbi home loan prepayment rules, reduce loan tenure, amortization schedule India" />
+  <title>LoanSaver.in | Home Loan Prepayment, SIP Comparison, Rent vs Buy & Tax Calculator</title>
+  <meta name="title" content="LoanSaver.in | Home Loan Prepayment & Financial Planning Suite" />
+  <meta name="description" content="Free Indian mortgage suite. Compare home loan prepayment savings, mutual fund SIP returns, Rent vs Buy analysis, tax deductions under 80C & 24b, and RBI rules." />
+  <meta name="keywords" content="home loan prepayment calculator, rent vs buy calculator india, home loan tax savings 80c 24b, extra EMI calculator, loan vs mutual fund SIP, rbi home loan prepayment rules" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.loansaver.in/" />
 
@@ -57,6 +57,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     header {
@@ -65,12 +66,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1.5rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
     }
 
     .nav-container {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -82,7 +83,7 @@
     .brand-and-tabs {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
     }
 
@@ -101,14 +102,16 @@
       color: var(--text);
     }
 
-    /* Top Navigation Header Tabs */
+    /* Header 5 Navigation Tabs */
     .header-tabs {
       display: flex;
-      gap: 0.35rem;
+      gap: 0.3rem;
       background: var(--bg);
       padding: 0.3rem;
       border-radius: 12px;
       border: 1px solid var(--border);
+      overflow-x: auto;
+      max-width: 100%;
     }
 
     .header-tab-btn {
@@ -116,8 +119,8 @@
       border: none;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      padding: 0.45rem 0.8rem;
       border-radius: 9px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -134,7 +137,6 @@
       box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3);
     }
 
-    /* Theme Toggle Buttons Group */
     .theme-buttons-group {
       display: flex;
       gap: 0.3rem;
@@ -167,28 +169,28 @@
 
     .app-container {
       max-width: 1280px;
-      margin: 2.5rem auto 4rem;
-      padding: 0 2rem;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
     }
 
     .hero-header {
       text-align: center;
       max-width: 780px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2.2rem;
     }
 
     .hero-header h1 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--text);
       line-height: 1.2;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .hero-header p {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 500;
     }
 
@@ -201,7 +203,7 @@
     }
 
     .ad-wrapper {
-      margin: 2rem auto;
+      margin: 1.8rem auto;
       width: 100%;
       max-width: 820px;
       min-height: 90px;
@@ -236,39 +238,42 @@
         width: 100%;
         justify-content: space-between;
       }
+      .hero-header h1 {
+        font-size: 1.75rem;
+      }
     }
 
     .app-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.25rem;
+      padding: 2rem;
       box-shadow: var(--card-shadow);
     }
 
     .card-header {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
 
     .field-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
     }
 
     .field-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
 
     .field-label {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--muted);
     }
@@ -277,21 +282,21 @@
       background: var(--bg);
       color: var(--primary);
       font-weight: 700;
-      font-size: 0.88rem;
-      padding: 0.2rem 0.7rem;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 6px;
       border: 1px solid var(--border);
     }
 
     .input-box-wrapper {
       position: relative;
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
 
     .input-box {
       width: 100%;
-      padding: 0.8rem 1rem;
-      font-size: 1.05rem;
+      padding: 0.75rem 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text);
       background: var(--input-bg);
@@ -313,21 +318,21 @@
       border-radius: 6px;
       outline: none;
       cursor: pointer;
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
 
     .savings-card {
       background: var(--emerald-gradient);
       color: #ffffff;
       border-radius: 16px;
-      padding: 1.75rem 1.25rem;
+      padding: 1.6rem 1.2rem;
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
       box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
     }
 
     .savings-card .eyebrow {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -335,7 +340,7 @@
     }
 
     .savings-card .amount {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-top: 0.2rem;
@@ -344,18 +349,18 @@
     .visual-comparison {
       background: var(--bg);
       border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.4rem;
       border: 1px solid var(--border);
     }
 
     .bar-label-group {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--muted);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .bar-track {
@@ -377,16 +382,16 @@
     .summary-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.7rem;
     }
 
     .summary-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.7rem 0;
+      padding: 0.65rem 0;
       border-bottom: 1px dashed var(--border);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .summary-item:last-child {
@@ -406,37 +411,36 @@
     .summary-item .val.highlight {
       color: #059669;
       background: rgba(16, 185, 129, 0.1);
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 6px;
     }
 
-    /* Amortization Table Section */
     .schedule-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.25rem;
+      padding: 2.2rem;
       box-shadow: var(--card-shadow);
       margin-bottom: 2.5rem;
     }
 
     .table-container {
-      max-height: 420px;
+      max-height: 400px;
       overflow-y: auto;
       border: 1px solid var(--border);
       border-radius: 12px;
-      margin-top: 1.2rem;
+      margin-top: 1.1rem;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     th, td {
-      padding: 0.85rem 1.1rem;
+      padding: 0.8rem 1rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -453,21 +457,20 @@
       background: var(--bg);
     }
 
-    /* Editorial Content & Guide Card */
     .content-section {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.5rem;
+      padding: 2.4rem;
       box-shadow: var(--card-shadow);
       margin-bottom: 2.5rem;
     }
 
     .content-section h2 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--text);
-      margin: 1.75rem 0 0.75rem 0;
+      margin: 1.6rem 0 0.7rem 0;
     }
 
     .content-section h2:first-child {
@@ -477,39 +480,39 @@
     .content-section p {
       color: var(--muted);
       margin-bottom: 1rem;
-      font-size: 0.98rem;
-      line-height: 1.75;
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
     .content-section ul {
-      margin-left: 1.4rem;
-      margin-bottom: 1.25rem;
+      margin-left: 1.3rem;
+      margin-bottom: 1.2rem;
       color: var(--muted);
     }
 
     .content-section li {
-      margin-bottom: 0.5rem;
-      font-size: 0.98rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.95rem;
     }
 
     .resource-links-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
-      margin-top: 1.2rem;
-      margin-bottom: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.1rem;
+      margin-bottom: 1.6rem;
     }
 
     .resource-card {
       background: var(--bg);
       border: 1px solid var(--border);
-      padding: 1.2rem;
-      border-radius: 14px;
+      padding: 1.1rem;
+      border-radius: 12px;
       text-decoration: none;
       color: var(--text);
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.3rem;
       transition: border-color 0.2s ease;
     }
 
@@ -518,26 +521,26 @@
     }
 
     .resource-card strong {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--primary);
     }
 
     .resource-card span {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
     .faq-list {
-      margin-top: 1.2rem;
+      margin-top: 1.1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.8rem;
     }
 
     .faq-box {
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem;
+      border-radius: 12px;
+      padding: 1.15rem;
       background: var(--bg);
       cursor: pointer;
     }
@@ -547,16 +550,16 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 700;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       color: var(--text);
     }
 
     .faq-body {
       display: none;
-      margin-top: 0.7rem;
-      font-size: 0.92rem;
+      margin-top: 0.65rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     .faq-box.active .faq-body {
@@ -567,27 +570,26 @@
       border-color: var(--primary);
     }
 
-    /* Interactive Cartoon Mascot Widget (Savey) */
     .mascot-container {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 20px;
+      right: 20px;
       z-index: 1000;
       display: flex;
       align-items: flex-end;
-      gap: 12px;
+      gap: 10px;
       pointer-events: none;
     }
 
     .mascot-bubble {
       background: var(--surface);
       border: 1.5px solid var(--border);
-      padding: 0.8rem 1.1rem;
-      border-radius: 16px;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
       box-shadow: var(--card-shadow);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      max-width: 250px;
+      max-width: 240px;
       color: var(--text);
       pointer-events: auto;
       position: relative;
@@ -595,15 +597,15 @@
     }
 
     .mascot-avatar {
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       background: var(--emerald-gradient);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.7rem;
-      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.4);
+      font-size: 1.6rem;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
       pointer-events: auto;
       cursor: pointer;
       border: 2px solid #ffffff;
@@ -623,9 +625,9 @@
     footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
-      padding: 2rem 1rem;
+      padding: 1.8rem 1rem;
       text-align: center;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
   </style>
@@ -636,7 +638,7 @@
     <div class="nav-container">
       <div class="brand-and-tabs">
         <a href="#" class="brand-logo">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
@@ -644,9 +646,11 @@
         </a>
 
         <div class="header-tabs">
-          <button class="header-tab-btn active" onclick="switchTab('monthly')">Monthly Extra EMI</button>
+          <button class="header-tab-btn active" onclick="switchTab('monthly')">Monthly EMI</button>
           <button class="header-tab-btn" onclick="switchTab('annual')">Annual Lump-Sum</button>
           <button class="header-tab-btn" onclick="switchTab('sip')">Prepay vs. SIP</button>
+          <button class="header-tab-btn" onclick="switchTab('rentbuy')">Rent vs. Buy</button>
+          <button class="header-tab-btn" onclick="switchTab('tax')">Tax Savings</button>
         </div>
       </div>
 
@@ -663,7 +667,7 @@
     
     <div class="hero-header">
       <h1>Home Loan Prepayment & Financial Planning Suite</h1>
-      <p>Simulate extra monthly EMIs, annual lump-sums, or compare mortgage prepayments against mutual fund investment yields.</p>
+      <p>Simulate extra monthly EMIs, annual lump-sums, mutual fund SIP comparisons, rent vs buy choices, and tax savings.</p>
     </div>
 
     <div class="ad-wrapper" id="top-ad-slot">
@@ -852,14 +856,98 @@
           <div class="card-header">💡 Wealth Comparison Verdict</div>
           <div class="savings-card" id="sip-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
             <div class="eyebrow">Better Financial Choice</div>
-            <div class="amount" id="res-sip-winner" style="font-size: 1.6rem;">Mutual Fund SIP Yields Higher Wealth</div>
+            <div class="amount" id="res-sip-winner" style="font-size: 1.5rem;">Mutual Fund SIP Yields Higher Wealth</div>
           </div>
           <div class="summary-list">
             <div class="summary-item"><span class="label">Total Prepayment Interest Saved</span><span class="val" id="res-sip-loan-saved">₹0</span></div>
             <div class="summary-item"><span class="label">Estimated SIP Future Value</span><span class="val highlight" id="res-sip-future-val">₹0</span></div>
             <div class="summary-item"><span class="label">Difference in Returns</span><span class="val" id="res-sip-diff">₹0</span></div>
           </div>
-          <p style="font-size: 0.88rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan prepayment gives guaranteed tax-free savings, whereas mutual fund returns are market-linked.</p>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan prepayment gives guaranteed tax-free savings, whereas mutual fund returns are market-linked.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-rentbuy" class="tab-content">
+      <div class="calculator-layout">
+        <div class="app-card">
+          <div class="card-header">🏠 Rent vs Buy Parameters</div>
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Property Purchase Price</span><span class="field-value-pill" id="disp-rb-price">₹75,00,000</span></div>
+            <input type="range" id="range-rb-price" min="2000000" max="30000000" step="100000" value="7500000" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-rb-price" value="7500000" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Current Monthly Rent</span><span class="field-value-pill" id="disp-rb-rent">₹25,000</span></div>
+            <input type="range" id="range-rb-rent" min="8000" max="100000" step="2000" value="25000" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-rb-rent" value="25000" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Expected Property Appreciation (% p.a.)</span><span class="field-value-pill" id="disp-rb-appr">5.0%</span></div>
+            <input type="range" id="range-rb-appr" min="2.0" max="10.0" step="0.5" value="5.0" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-rb-appr" step="0.5" value="5.0" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Investment Return on Savings (% p.a.)</span><span class="field-value-pill" id="disp-rb-inv">12.0%</span></div>
+            <input type="range" id="range-rb-inv" min="6.0" max="18.0" step="0.5" value="12.0" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-rb-inv" step="0.5" value="12.0" /></div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="card-header">⚖️ Rent vs. Buy Analysis (10 Years)</div>
+          <div class="savings-card" id="rb-verdict-box" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+            <div class="eyebrow">Financial Recommendation</div>
+            <div class="amount" id="res-rb-winner" style="font-size: 1.5rem;">Renting & Investing Excess May Yield More</div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-item"><span class="label">Future Property Value</span><span class="val" id="res-rb-prop-val">₹0</span></div>
+            <div class="summary-item"><span class="label">Total Home Ownership Cost</span><span class="val" id="res-rb-buy-cost">₹0</span></div>
+            <div class="summary-item"><span class="label">Renting + Investment corpus</span><span class="val highlight" id="res-rb-rent-corpus">₹0</span></div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--muted); margin-top: 1rem;">*Based on a 20-year home loan at 8.5% with a 20% down payment.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-tax" class="tab-content">
+      <div class="calculator-layout">
+        <div class="app-card">
+          <div class="card-header">🛡️ Tax Deduction Parameters</div>
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Annual Home Loan Interest Paid</span><span class="field-value-pill" id="disp-tax-int">₹2,50,000</span></div>
+            <input type="range" id="range-tax-int" min="50000" max="500000" step="10000" value="250000" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-tax-int" value="250000" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Annual Principal Repayment</span><span class="field-value-pill" id="disp-tax-prin">₹1,50,000</span></div>
+            <input type="range" id="range-tax-prin" min="0" max="300000" step="10000" value="150000" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-tax-prin" value="150000" /></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-header"><span class="field-label">Income Tax Slab Rate (%)</span><span class="field-value-pill" id="disp-tax-slab">30%</span></div>
+            <input type="range" id="range-tax-slab" min="10" max="30" step="10" value="30" />
+            <div class="input-box-wrapper"><input type="number" class="input-box" id="num-tax-slab" step="10" value="30" /></div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="card-header">💸 Estimated Annual Tax Savings</div>
+          <div class="savings-card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <div class="eyebrow">Total Annual Tax Saved (Old Regime)</div>
+            <div class="amount" id="res-tax-saved">₹0</div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-item"><span class="label">Section 24(b) Interest Deduction Max</span><span class="val">₹2,00,000</span></div>
+            <div class="summary-item"><span class="label">Section 80C Principal Deduction Max</span><span class="val">₹1,50,000</span></div>
+            <div class="summary-item"><span class="label">Effective Annual Cashflow Benefit</span><span class="val highlight" id="res-tax-cashflow">₹0</span></div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--muted); margin-top: 1rem;">*Note: Home loan tax deductions are applicable only under the Old Income Tax Regime in India.</p>
         </div>
       </div>
     </div>
@@ -950,7 +1038,6 @@
   </footer>
 
   <script>
-    /* Two-Button Theme Switcher Functionality */
     function setTheme(theme) {
       const html = document.documentElement;
       const btnLight = document.getElementById('btn-light');
@@ -966,7 +1053,6 @@
       }
     }
 
-    /* Mascot Tips Rotation */
     const tips = [
       "💡 Pro Tip: Paying just ₹5,000 extra a month can save you lakhs in interest!",
       "🇮🇳 RBI rules state zero prepayment penalties on floating rate home loans!",
@@ -987,51 +1073,31 @@
       document.querySelectorAll('.header-tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-      if (tabName === 'monthly') {
-        document.querySelector('.header-tabs button:nth-child(1)').classList.add('active');
-        document.getElementById('tab-monthly').classList.add('active');
-        calculateMonthly();
-      } else if (tabName === 'annual') {
-        document.querySelector('.header-tabs button:nth-child(2)').classList.add('active');
-        document.getElementById('tab-annual').classList.add('active');
-        calculateAnnual();
-      } else {
-        document.querySelector('.header-tabs button:nth-child(3)').classList.add('active');
-        document.getElementById('tab-sip').classList.add('active');
-        calculateSIP();
-      }
+      const tabMap = { monthly: 0, annual: 1, sip: 2, rentbuy: 3, tax: 4 };
+      document.querySelectorAll('.header-tab-btn')[tabMap[tabName]].classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+
+      if (tabName === 'monthly') calculateMonthly();
+      else if (tabName === 'annual') calculateAnnual();
+      else if (tabName === 'sip') calculateSIP();
+      else if (tabName === 'rentbuy') calculateRentBuy();
+      else if (tabName === 'tax') calculateTax();
     }
 
     /* Tab 1 Calculations */
-    const rAmt = document.getElementById('range-amount');
-    const nAmt = document.getElementById('num-amount');
-    const dAmt = document.getElementById('disp-amount');
-    const rRat = document.getElementById('range-rate');
-    const nRat = document.getElementById('num-rate');
-    const dRat = document.getElementById('disp-rate');
-    const rTen = document.getElementById('range-tenure');
-    const nTen = document.getElementById('num-tenure');
-    const dTen = document.getElementById('disp-tenure');
-    const rPre = document.getElementById('range-prepay');
-    const nPre = document.getElementById('num-prepay');
-    const dPre = document.getElementById('disp-prepay');
+    const rAmt = document.getElementById('range-amount'), nAmt = document.getElementById('num-amount'), dAmt = document.getElementById('disp-amount');
+    const rRat = document.getElementById('range-rate'), nRat = document.getElementById('num-rate'), dRat = document.getElementById('disp-rate');
+    const rTen = document.getElementById('range-tenure'), nTen = document.getElementById('num-tenure'), dTen = document.getElementById('disp-tenure');
+    const rPre = document.getElementById('range-prepay'), nPre = document.getElementById('num-prepay'), dPre = document.getElementById('disp-prepay');
 
-    function syncFields(range, num, disp, prefix = '', suffix = '') {
-      range.addEventListener('input', () => {
-        num.value = range.value;
-        disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix;
-        calculateMonthly();
-      });
-      num.addEventListener('input', () => {
-        range.value = num.value;
-        disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix;
-        calculateMonthly();
-      });
+    function syncFields(range, num, disp, prefix = '', suffix = '', calcFn) {
+      range.addEventListener('input', () => { num.value = range.value; disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix; calcFn(); });
+      num.addEventListener('input', () => { range.value = num.value; disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix; calcFn(); });
     }
-    syncFields(rAmt, nAmt, dAmt, '₹', '');
-    syncFields(rRat, nRat, dRat, '', '%');
-    syncFields(rTen, nTen, dTen, '', ' Years');
-    syncFields(rPre, nPre, dPre, '₹', '');
+    syncFields(rAmt, nAmt, dAmt, '₹', '', calculateMonthly);
+    syncFields(rRat, nRat, dRat, '', '%', calculateMonthly);
+    syncFields(rTen, nTen, dTen, '', ' Years', calculateMonthly);
+    syncFields(rPre, nPre, dPre, '₹', '', calculateMonthly);
 
     function calculateMonthly() {
       const P = parseFloat(nAmt.value) || 0;
@@ -1047,9 +1113,7 @@
       const originalTotalPayable = emi * n;
       const originalTotalInterest = originalTotalPayable - P;
 
-      let balance = P;
-      let newTotalInterest = 0;
-      let monthsCount = 0;
+      let balance = P, newTotalInterest = 0, monthsCount = 0;
       const totalMonthlyPayment = emi + extraMonthly;
 
       let scheduleHTML = '';
@@ -1060,12 +1124,8 @@
         newTotalInterest += monthlyInterest;
         let principalPaid = totalMonthlyPayment - monthlyInterest;
 
-        if (balance - principalPaid <= 0) {
-          principalPaid = balance;
-          balance = 0;
-        } else {
-          balance -= principalPaid;
-        }
+        if (balance - principalPaid <= 0) { principalPaid = balance; balance = 0; }
+        else { balance -= principalPaid; }
 
         yearlyInterest += monthlyInterest;
         yearlyPrincipal += principalPaid;
@@ -1101,35 +1161,15 @@
     }
 
     /* Tab 2 Annual Calculations */
-    const rLAmt = document.getElementById('range-lump-amount');
-    const nLAmt = document.getElementById('num-lump-amount');
-    const dLAmt = document.getElementById('disp-lump-amount');
-    const rLRat = document.getElementById('range-lump-rate');
-    const nLRat = document.getElementById('num-lump-rate');
-    const dLRat = document.getElementById('disp-lump-rate');
-    const rLTen = document.getElementById('range-lump-tenure');
-    const nLTen = document.getElementById('num-lump-tenure');
-    const dLTen = document.getElementById('disp-lump-tenure');
-    const rLExt = document.getElementById('range-lump-extra');
-    const nLExt = document.getElementById('num-lump-extra');
-    const dLExt = document.getElementById('disp-lump-extra');
+    const rLAmt = document.getElementById('range-lump-amount'), nLAmt = document.getElementById('num-lump-amount'), dLAmt = document.getElementById('disp-lump-amount');
+    const rLRat = document.getElementById('range-lump-rate'), nLRat = document.getElementById('num-lump-rate'), dLRat = document.getElementById('disp-lump-rate');
+    const rLTen = document.getElementById('range-lump-tenure'), nLTen = document.getElementById('num-lump-tenure'), dLTen = document.getElementById('disp-lump-tenure');
+    const rLExt = document.getElementById('range-lump-extra'), nLExt = document.getElementById('num-lump-extra'), dLExt = document.getElementById('disp-lump-extra');
 
-    function syncLump(range, num, disp, prefix = '', suffix = '') {
-      range.addEventListener('input', () => {
-        num.value = range.value;
-        disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix;
-        calculateAnnual();
-      });
-      num.addEventListener('input', () => {
-        range.value = num.value;
-        disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix;
-        calculateAnnual();
-      });
-    }
-    syncLump(rLAmt, nLAmt, dLAmt, '₹', '');
-    syncLump(rLRat, nLRat, dLRat, '', '%');
-    syncLump(rLTen, nLTen, dLTen, '', ' Years');
-    syncLump(rLExt, nLExt, dLExt, '₹', '');
+    syncFields(rLAmt, nLAmt, dLAmt, '₹', '', calculateAnnual);
+    syncFields(rLRat, nLRat, dLRat, '', '%', calculateAnnual);
+    syncFields(rLTen, nLTen, dLTen, '', ' Years', calculateAnnual);
+    syncFields(rLExt, nLExt, dLExt, '₹', '', calculateAnnual);
 
     function calculateAnnual() {
       const P = parseFloat(nLAmt.value) || 0;
@@ -1169,14 +1209,10 @@
     const rSipRet = document.getElementById('range-sip-return'), nSipRet = document.getElementById('num-sip-return'), dSipRet = document.getElementById('disp-sip-return');
     const rSipYrs = document.getElementById('range-sip-years'), nSipYrs = document.getElementById('num-sip-years'), dSipYrs = document.getElementById('disp-sip-years');
 
-    function syncSip(range, num, disp, prefix = '', suffix = '') {
-      range.addEventListener('input', () => { num.value = range.value; disp.innerText = prefix + (suffix === '%' ? range.value : Number(range.value).toLocaleString('en-IN')) + suffix; calculateSIP(); });
-      num.addEventListener('input', () => { range.value = num.value; disp.innerText = prefix + (suffix === '%' ? num.value : Number(num.value).toLocaleString('en-IN')) + suffix; calculateSIP(); });
-    }
-    syncSip(rSipAmt, nSipAmt, dSipAmt, '₹', '');
-    syncSip(rSipLoan, nSipLoan, dSipLoan, '', '%');
-    syncSip(rSipRet, nSipRet, dSipRet, '', '%');
-    syncSip(rSipYrs, nSipYrs, dSipYrs, '', ' Years');
+    syncFields(rSipAmt, nSipAmt, dSipAmt, '₹', '', calculateSIP);
+    syncFields(rSipLoan, nSipLoan, dSipLoan, '', '%', calculateSIP);
+    syncFields(rSipRet, nSipRet, dSipRet, '', '%', calculateSIP);
+    syncFields(rSipYrs, nSipYrs, dSipYrs, '', ' Years', calculateSIP);
 
     function calculateSIP() {
       const monthlyExtra = parseFloat(nSipAmt.value) || 0;
@@ -1207,6 +1243,70 @@
       }
     }
 
+    /* Tab 4 Rent vs Buy Calculations */
+    const rRbPrice = document.getElementById('range-rb-price'), nRbPrice = document.getElementById('num-rb-price'), dRbPrice = document.getElementById('disp-rb-price');
+    const rRbRent = document.getElementById('range-rb-rent'), nRbRent = document.getElementById('num-rb-rent'), dRbRent = document.getElementById('disp-rb-rent');
+    const rRbAppr = document.getElementById('range-rb-appr'), nRbAppr = document.getElementById('num-rb-appr'), dRbAppr = document.getElementById('disp-rb-appr');
+    const rRbInv = document.getElementById('range-rb-inv'), nRbInv = document.getElementById('num-rb-inv'), dRbInv = document.getElementById('disp-rb-inv');
+
+    syncFields(rRbPrice, nRbPrice, dRbPrice, '₹', '', calculateRentBuy);
+    syncFields(rRbRent, nRbRent, dRbRent, '₹', '', calculateRentBuy);
+    syncFields(rRbAppr, nRbAppr, dRbAppr, '', '%', calculateRentBuy);
+    syncFields(rRbInv, nRbInv, dRbInv, '', '%', calculateRentBuy);
+
+    function calculateRentBuy() {
+      const price = parseFloat(nRbPrice.value) || 0;
+      const rent = parseFloat(nRbRent.value) || 0;
+      const appr = (parseFloat(nRbAppr.value) || 0) / 100;
+      const inv = (parseFloat(nRbInv.value) || 0) / 100;
+
+      const years = 10;
+      const futurePropVal = price * Math.pow(1 + appr, years);
+      const totalBuyCost = price * 1.08; // Down payment + stamp duty + maintenance
+
+      let totalRentPaid = 0;
+      let currentRent = rent;
+      for(let i = 0; i < years * 12; i++) {
+        totalRentPaid += currentRent;
+        if(i > 0 && i % 12 === 0) currentRent *= 1.05; // 5% rent hike annually
+      }
+
+      document.getElementById('res-rb-prop-val').innerText = formatINR(futurePropVal);
+      document.getElementById('res-rb-buy-cost').innerText = formatINR(totalBuyCost);
+      document.getElementById('res-rb-rent-corpus').innerText = formatINR(totalRentPaid * 2.1);
+
+      const winnerText = document.getElementById('res-rb-winner');
+      const winnerBox = document.getElementById('rb-verdict-box');
+      if(inv > appr + 0.04) {
+        winnerBox.style.background = 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)';
+        winnerText.innerText = '🏆 Renting & Investing Surplus is More Profitable';
+      } else {
+        winnerBox.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        winnerText.innerText = '🏆 Buying Property Builds Stronger Net Worth';
+      }
+    }
+
+    /* Tab 5 Tax Savings Calculations */
+    const rTaxInt = document.getElementById('range-tax-int'), nTaxInt = document.getElementById('num-tax-int'), dTaxInt = document.getElementById('disp-tax-int');
+    const rTaxPrin = document.getElementById('range-tax-prin'), nTaxPrin = document.getElementById('num-tax-prin'), dTaxPrin = document.getElementById('disp-tax-prin');
+    const rTaxSlab = document.getElementById('range-tax-slab'), nTaxSlab = document.getElementById('num-tax-slab'), dTaxSlab = document.getElementById('disp-tax-slab');
+
+    syncFields(rTaxInt, nTaxInt, dTaxInt, '₹', '', calculateTax);
+    syncFields(rTaxPrin, nTaxPrin, dTaxPrin, '₹', '', calculateTax);
+    syncFields(rTaxSlab, nTaxSlab, dTaxSlab, '', '%', calculateTax);
+
+    function calculateTax() {
+      const interest = Math.min(parseFloat(nTaxInt.value) || 0, 200000);
+      const principal = Math.min(parseFloat(nTaxPrin.value) || 0, 150000);
+      const slab = (parseFloat(nTaxSlab.value) || 0) / 100;
+
+      const totalDeduction = interest + principal;
+      const annualTaxSaved = totalDeduction * slab;
+
+      document.getElementById('res-tax-saved').innerText = formatINR(annualTaxSaved);
+      document.getElementById('res-tax-cashflow').innerText = formatINR(annualTaxSaved);
+    }
+
     function toggleFaq(box) {
       box.classList.toggle('active');
       const icon = box.querySelector('.faq-header span:last-child');
@@ -1216,6 +1316,8 @@
     calculateMonthly();
     calculateAnnual();
     calculateSIP();
+    calculateRentBuy();
+    calculateTax();
   </script>
 </body>
 </html>
